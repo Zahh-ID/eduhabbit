@@ -69,6 +69,55 @@
     "achievements": { "title": "Achievements", "subtitle": "Your progress and badges" },
     "profile": { "title": "Profile", "subtitle": "Your account settings" }
   },
+  "todos": {
+    "title": "To-Do List",
+    "subtitle": "Manage your tasks and stay productive",
+    "addTask": "Add Task",
+    "editTask": "Edit Task",
+    "deleteTask": "Delete Task",
+    "cancelTask": "Cancel Task",
+    "restoreTask": "Restore Task",
+    "filters": {
+      "all": "All",
+      "pending": "Pending",
+      "done": "Done",
+      "cancelled": "Cancelled"
+    },
+    "form": {
+      "title": "Task Title",
+      "titlePlaceholder": "What do you need to do?",
+      "description": "Description",
+      "descriptionPlaceholder": "Add details (optional)",
+      "dueDate": "Due Date",
+      "save": "Save",
+      "cancel": "Cancel",
+      "titleRequired": "Title is required"
+    },
+    "status": {
+      "pending": "Pending",
+      "done": "Done",
+      "cancelled": "Cancelled"
+    },
+    "empty": {
+      "all": "No tasks yet. Add your first task!",
+      "pending": "No pending tasks. Great job!",
+      "done": "No completed tasks yet.",
+      "cancelled": "No cancelled tasks."
+    },
+    "toast": {
+      "added": "Task added!",
+      "completed": "Task completed! +100 pts",
+      "deleted": "Task deleted",
+      "updated": "Task updated",
+      "cancelled": "Task cancelled",
+      "restored": "Task restored"
+    },
+    "overdue": "Overdue",
+    "dueToday": "Due today",
+    "noDescription": "No description",
+    "confirmDelete": "Delete this task?",
+    "confirmCancel": "Cancel this task?"
+  },
   "theme": {
     "light": "Light",
     "dark": "Dark",

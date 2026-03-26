@@ -69,6 +69,55 @@
     "achievements": { "title": "Pencapaian", "subtitle": "Progres dan lencana kamu" },
     "profile": { "title": "Profil", "subtitle": "Pengaturan akun kamu" }
   },
+  "todos": {
+    "title": "Daftar Tugas",
+    "subtitle": "Kelola tugas Anda dan tetap produktif",
+    "addTask": "Tambah Tugas",
+    "editTask": "Edit Tugas",
+    "deleteTask": "Hapus Tugas",
+    "cancelTask": "Batalkan Tugas",
+    "restoreTask": "Pulihkan Tugas",
+    "filters": {
+      "all": "Semua",
+      "pending": "Tertunda",
+      "done": "Selesai",
+      "cancelled": "Dibatalkan"
+    },
+    "form": {
+      "title": "Judul Tugas",
+      "titlePlaceholder": "Apa yang perlu Anda lakukan?",
+      "description": "Deskripsi",
+      "descriptionPlaceholder": "Tambahkan detail (opsional)",
+      "dueDate": "Tanggal Jatuh Tempo",
+      "save": "Simpan",
+      "cancel": "Batal",
+      "titleRequired": "Judul wajib diisi"
+    },
+    "status": {
+      "pending": "Tertunda",
+      "done": "Selesai",
+      "cancelled": "Dibatalkan"
+    },
+    "empty": {
+      "all": "Belum ada tugas. Tambahkan tugas pertama Anda!",
+      "pending": "Tidak ada tugas tertunda. Kerja bagus!",
+      "done": "Belum ada tugas yang selesai.",
+      "cancelled": "Tidak ada tugas yang dibatalkan."
+    },
+    "toast": {
+      "added": "Tugas ditambahkan!",
+      "completed": "Tugas selesai! +100 poin",
+      "deleted": "Tugas dihapus",
+      "updated": "Tugas diperbarui",
+      "cancelled": "Tugas dibatalkan",
+      "restored": "Tugas dipulihkan"
+    },
+    "overdue": "Terlambat",
+    "dueToday": "Jatuh tempo hari ini",
+    "noDescription": "Tidak ada deskripsi",
+    "confirmDelete": "Hapus tugas ini?",
+    "confirmCancel": "Batalkan tugas ini?"
+  },
   "theme": {
     "light": "Terang",
     "dark": "Gelap",

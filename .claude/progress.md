@@ -24,7 +24,7 @@
 - **Notes:** 10/10 tests passed. CSS custom properties (light/dark), glassmorphism tokens, en.json + id.json (nav/common/pages/theme/locale), theme-toggle and locale-switcher client components, layout updated with FOUT-prevention script.
 
 ## Phase 4: Layout Shell, Navigation & Placeholder Pages
-- **Status:** not-started
-- **Started:** —
-- **Completed:** —
-- **Notes:** —
+- **Status:** complete
+- **Started:** 2026-03-26
+- **Completed:** 2026-03-26
+- **Notes:** 15/15 tests passed. Sidebar with 7 nav links, mobile hamburger, glassmorphism. All placeholder pages. utils.ts, gemini.ts, achievements.ts (20 levels, 31 badges). Fixed edge runtime issue in middleware (replaced auth() import with getToken from next-auth/jwt).

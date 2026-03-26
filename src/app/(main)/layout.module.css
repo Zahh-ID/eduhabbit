@@ -1,0 +1,42 @@
+/* ─── App Shell ───────────────────────────────────────────────────────────── */
+
+.shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ─── Content Area ────────────────────────────────────────────────────────── */
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  /* On mobile, content takes full width */
+}
+
+/* On desktop, offset content to account for fixed sidebar */
+@media (min-width: 1024px) {
+  .content {
+    margin-left: 260px;
+  }
+}
+
+/* ─── Main Content ────────────────────────────────────────────────────────── */
+
+.main {
+  flex: 1;
+  padding: 1.5rem 1rem;
+}
+
+@media (min-width: 640px) {
+  .main {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main {
+    padding: 2rem 2.5rem;
+  }
+}

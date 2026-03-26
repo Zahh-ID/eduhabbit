@@ -245,6 +245,36 @@
     "errorFileSize": "Ukuran file harus di bawah 2MB.",
     "errorSave": "Gagal menyimpan perubahan. Silakan coba lagi."
   },
+  "achievements": {
+    "title": "Pencapaian",
+    "subtitle": "Progres, level, dan lencana kamu",
+    "level": "Level",
+    "xp": "XP",
+    "progress": "Progres",
+    "nextLevel": "Level Berikutnya",
+    "maxLevel": "Level Maksimum Tercapai",
+    "pointsToNext": "{points} poin menuju level berikutnya",
+    "badges": "Lencana",
+    "pointsHistory": "Riwayat Poin",
+    "claim": "Klaim",
+    "claimed": "Diklaim",
+    "locked": "Terkunci",
+    "earned": "Diraih",
+    "loadMore": "Muat Lebih Banyak",
+    "noBadges": "Tidak ada lencana tersedia.",
+    "noHistory": "Belum ada riwayat poin.",
+    "claimSuccess": "Lencana berhasil diklaim!",
+    "alreadyClaimed": "Kamu sudah mengklaim lencana ini.",
+    "notEligible": "Kamu belum memenuhi syarat untuk lencana ini.",
+    "category": {
+      "health": "Kesehatan",
+      "finance": "Keuangan",
+      "todo": "Tugas",
+      "habit": "Kebiasaan",
+      "streak": "Streak",
+      "general": "Umum"
+    }
+  },
   "theme": {
     "light": "Terang",
     "dark": "Gelap",

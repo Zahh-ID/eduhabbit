@@ -245,6 +245,36 @@
     "errorFileSize": "File size must be under 2MB.",
     "errorSave": "Failed to save changes. Please try again."
   },
+  "achievements": {
+    "title": "Achievements",
+    "subtitle": "Your progress, levels, and badges",
+    "level": "Level",
+    "xp": "XP",
+    "progress": "Progress",
+    "nextLevel": "Next Level",
+    "maxLevel": "Max Level Reached",
+    "pointsToNext": "{points} points to next level",
+    "badges": "Badges",
+    "pointsHistory": "Points History",
+    "claim": "Claim",
+    "claimed": "Claimed",
+    "locked": "Locked",
+    "earned": "Earned",
+    "loadMore": "Load More",
+    "noBadges": "No badges available.",
+    "noHistory": "No points history yet.",
+    "claimSuccess": "Badge claimed successfully!",
+    "alreadyClaimed": "You have already claimed this badge.",
+    "notEligible": "You are not eligible for this badge yet.",
+    "category": {
+      "health": "Health",
+      "finance": "Finance",
+      "todo": "Todo",
+      "habit": "Habit",
+      "streak": "Streak",
+      "general": "General"
+    }
+  },
   "theme": {
     "light": "Light",
     "dark": "Dark",

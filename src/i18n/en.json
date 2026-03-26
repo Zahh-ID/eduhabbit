@@ -1,0 +1,38 @@
+{
+  "auth": {
+    "login": {
+      "title": "Welcome Back",
+      "subtitle": "Sign in to continue your journey",
+      "emailLabel": "Email",
+      "emailPlaceholder": "your@email.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "submitButton": "Sign In",
+      "loadingButton": "Signing in...",
+      "googleButton": "Continue with Google",
+      "noAccount": "Don't have an account?",
+      "registerLink": "Register",
+      "errorInvalid": "Invalid email or password",
+      "errorGeneric": "Something went wrong. Please try again."
+    },
+    "register": {
+      "title": "Create Account",
+      "subtitle": "Start your habit journey today",
+      "nameLabel": "Full Name",
+      "namePlaceholder": "Your name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "your@email.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Create a password",
+      "confirmPasswordLabel": "Confirm Password",
+      "confirmPasswordPlaceholder": "Repeat your password",
+      "submitButton": "Create Account",
+      "loadingButton": "Creating account...",
+      "hasAccount": "Already have an account?",
+      "loginLink": "Sign in",
+      "errorPasswordMismatch": "Passwords do not match",
+      "errorEmailTaken": "Email is already registered",
+      "errorGeneric": "Something went wrong. Please try again."
+    }
+  }
+}

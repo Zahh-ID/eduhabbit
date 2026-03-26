@@ -1,0 +1,38 @@
+{
+  "auth": {
+    "login": {
+      "title": "Selamat Datang Kembali",
+      "subtitle": "Masuk untuk melanjutkan perjalananmu",
+      "emailLabel": "Email",
+      "emailPlaceholder": "emailmu@contoh.com",
+      "passwordLabel": "Kata Sandi",
+      "passwordPlaceholder": "Masukkan kata sandimu",
+      "submitButton": "Masuk",
+      "loadingButton": "Sedang masuk...",
+      "googleButton": "Lanjutkan dengan Google",
+      "noAccount": "Belum punya akun?",
+      "registerLink": "Daftar",
+      "errorInvalid": "Email atau kata sandi salah",
+      "errorGeneric": "Terjadi kesalahan. Silakan coba lagi."
+    },
+    "register": {
+      "title": "Buat Akun",
+      "subtitle": "Mulai perjalanan kebiasaanmu hari ini",
+      "nameLabel": "Nama Lengkap",
+      "namePlaceholder": "Namamu",
+      "emailLabel": "Email",
+      "emailPlaceholder": "emailmu@contoh.com",
+      "passwordLabel": "Kata Sandi",
+      "passwordPlaceholder": "Buat kata sandi",
+      "confirmPasswordLabel": "Konfirmasi Kata Sandi",
+      "confirmPasswordPlaceholder": "Ulangi kata sandimu",
+      "submitButton": "Buat Akun",
+      "loadingButton": "Membuat akun...",
+      "hasAccount": "Sudah punya akun?",
+      "loginLink": "Masuk",
+      "errorPasswordMismatch": "Kata sandi tidak cocok",
+      "errorEmailTaken": "Email sudah terdaftar",
+      "errorGeneric": "Terjadi kesalahan. Silakan coba lagi."
+    }
+  }
+}

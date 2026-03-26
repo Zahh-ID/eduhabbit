@@ -171,6 +171,51 @@
       "inactive": "Inactive"
     }
   },
+  "finance": {
+    "noActiveTarget": "You don't have an active savings goal yet.",
+    "createFirst": "Create Your First Savings Goal",
+    "createTarget": "Create Savings Goal",
+    "purpose": "Purpose",
+    "purposePlaceholder": "e.g. New laptop, Emergency fund...",
+    "targetAmount": "Target Amount",
+    "currentAmount": "Current Amount",
+    "dueDate": "Due Date (Optional)",
+    "progress": "Progress",
+    "addMoney": "Add Money",
+    "addMoneyTitle": "Add Money to Savings",
+    "amount": "Amount",
+    "amountPlaceholder": "Enter amount...",
+    "completeTarget": "Complete Goal",
+    "cancelTarget": "Cancel Goal",
+    "confirmComplete": "Mark this savings goal as completed?",
+    "confirmCancel": "Are you sure you want to cancel this savings goal?",
+    "transactionHistory": "Transaction History",
+    "noTransactions": "No transactions yet.",
+    "transactionAdded": "added",
+    "pastTargets": "Past Goals",
+    "noPastTargets": "No past savings goals.",
+    "status": {
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "badges": "Finance Badges",
+    "badgeEarned": "Earned",
+    "badgeEligible": "Eligible to Claim",
+    "badgeLocked": "Locked",
+    "errors": {
+      "activeTargetExists": "You already have an active savings goal. Complete or cancel it first.",
+      "invalidAmount": "Amount must be greater than 0.",
+      "targetNotFound": "Savings goal not found.",
+      "alreadyFinished": "This savings goal is already completed or cancelled."
+    },
+    "toasts": {
+      "targetCreated": "Savings goal created!",
+      "moneyAdded": "Money added! +100 points earned.",
+      "targetCompleted": "Savings goal completed!",
+      "targetCancelled": "Savings goal cancelled."
+    }
+  },
   "theme": {
     "light": "Light",
     "dark": "Dark",

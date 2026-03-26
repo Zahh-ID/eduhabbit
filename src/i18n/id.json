@@ -171,6 +171,51 @@
       "inactive": "Tidak Aktif"
     }
   },
+  "finance": {
+    "noActiveTarget": "Kamu belum memiliki tujuan tabungan yang aktif.",
+    "createFirst": "Buat Tujuan Tabungan Pertamamu",
+    "createTarget": "Buat Tujuan Tabungan",
+    "purpose": "Tujuan",
+    "purposePlaceholder": "mis. Laptop baru, Dana darurat...",
+    "targetAmount": "Target Jumlah",
+    "currentAmount": "Jumlah Saat Ini",
+    "dueDate": "Tanggal Target (Opsional)",
+    "progress": "Progres",
+    "addMoney": "Tambah Uang",
+    "addMoneyTitle": "Tambah Uang ke Tabungan",
+    "amount": "Jumlah",
+    "amountPlaceholder": "Masukkan jumlah...",
+    "completeTarget": "Selesaikan Tujuan",
+    "cancelTarget": "Batalkan Tujuan",
+    "confirmComplete": "Tandai tujuan tabungan ini sebagai selesai?",
+    "confirmCancel": "Apakah kamu yakin ingin membatalkan tujuan tabungan ini?",
+    "transactionHistory": "Riwayat Transaksi",
+    "noTransactions": "Belum ada transaksi.",
+    "transactionAdded": "ditambahkan",
+    "pastTargets": "Tujuan Lalu",
+    "noPastTargets": "Tidak ada tujuan tabungan sebelumnya.",
+    "status": {
+      "active": "Aktif",
+      "completed": "Selesai",
+      "cancelled": "Dibatalkan"
+    },
+    "badges": "Lencana Keuangan",
+    "badgeEarned": "Diraih",
+    "badgeEligible": "Bisa Diklaim",
+    "badgeLocked": "Terkunci",
+    "errors": {
+      "activeTargetExists": "Kamu sudah memiliki tujuan tabungan aktif. Selesaikan atau batalkan terlebih dahulu.",
+      "invalidAmount": "Jumlah harus lebih besar dari 0.",
+      "targetNotFound": "Tujuan tabungan tidak ditemukan.",
+      "alreadyFinished": "Tujuan tabungan ini sudah selesai atau dibatalkan."
+    },
+    "toasts": {
+      "targetCreated": "Tujuan tabungan berhasil dibuat!",
+      "moneyAdded": "Uang berhasil ditambahkan! +100 poin diperoleh.",
+      "targetCompleted": "Tujuan tabungan selesai!",
+      "targetCancelled": "Tujuan tabungan dibatalkan."
+    }
+  },
   "theme": {
     "light": "Terang",
     "dark": "Gelap",

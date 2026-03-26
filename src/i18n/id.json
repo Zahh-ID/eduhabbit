@@ -118,6 +118,59 @@
     "confirmDelete": "Hapus tugas ini?",
     "confirmCancel": "Batalkan tugas ini?"
   },
+  "habits": {
+    "title": "Kebiasaan Harian",
+    "subtitle": "Bangun konsistensi satu hari dalam satu waktu",
+    "addHabit": "Tambah Kebiasaan",
+    "deactivate": "Nonaktifkan",
+    "activate": "Aktifkan",
+    "deleteHabit": "Hapus Kebiasaan",
+    "types": {
+      "exercise": "Olahraga",
+      "work": "Pekerjaan",
+      "fun": "Hiburan",
+      "other": "Lainnya"
+    },
+    "form": {
+      "title": "Nama Kebiasaan",
+      "titlePlaceholder": "mis. Lari pagi, Baca 30 menit...",
+      "type": "Tipe",
+      "save": "Simpan",
+      "cancel": "Batal",
+      "titleRequired": "Nama kebiasaan wajib diisi",
+      "typeRequired": "Pilih tipe kebiasaan"
+    },
+    "progress": {
+      "title": "Progres Hari Ini",
+      "counter": "{completed} / {total} kebiasaan selesai"
+    },
+    "graph": {
+      "title": "Riwayat Kebiasaan",
+      "tooltip": "{count} kebiasaan pada {date}",
+      "less": "Kurang",
+      "more": "Lebih"
+    },
+    "empty": {
+      "noHabits": "Belum ada kebiasaan. Tambahkan kebiasaan pertama Anda!",
+      "noActive": "Tidak ada kebiasaan aktif. Aktifkan salah satu untuk memulai."
+    },
+    "toast": {
+      "added": "Kebiasaan ditambahkan!",
+      "completed": "Kebiasaan selesai! +50 poin",
+      "unchecked": "Kebiasaan dibatalkan",
+      "deleted": "Kebiasaan dihapus",
+      "deactivated": "Kebiasaan dinonaktifkan",
+      "activated": "Kebiasaan diaktifkan"
+    },
+    "filters": {
+      "active": "Aktif",
+      "all": "Semua"
+    },
+    "status": {
+      "active": "Aktif",
+      "inactive": "Tidak Aktif"
+    }
+  },
   "theme": {
     "light": "Terang",
     "dark": "Gelap",

@@ -1,0 +1,157 @@
+.item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.875rem 1.1rem;
+  border-radius: var(--radius-md);
+  transition: opacity 0.2s;
+}
+
+.inactive {
+  opacity: 0.65;
+}
+
+.left {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, border-color 0.15s;
+  padding: 0;
+}
+
+.checkbox:hover {
+  background: rgba(59, 130, 246, 0.15);
+}
+
+.checked {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.checkmark {
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.inactiveDot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  background: transparent;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.titleDone {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+}
+
+.badges {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.typeBadge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.typeExercise {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+}
+
+.typeWork {
+  background: rgba(139, 92, 246, 0.15);
+  color: #a78bfa;
+}
+
+.typeFun {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+}
+
+.typeOther {
+  background: rgba(156, 163, 175, 0.15);
+  color: #9ca3af;
+}
+
+.inactiveBadge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(156, 163, 175, 0.1);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+}
+
+.actions {
+  display: flex;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.actionBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--color-text-muted);
+  transition: background 0.15s, color 0.15s;
+}
+
+.actionBtn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-text);
+}
+
+.activateBtn {
+  color: var(--color-success);
+}
+
+.deleteBtn:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--color-error);
+}

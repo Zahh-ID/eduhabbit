@@ -118,6 +118,59 @@
     "confirmDelete": "Delete this task?",
     "confirmCancel": "Cancel this task?"
   },
+  "habits": {
+    "title": "Daily Habits",
+    "subtitle": "Build consistency one day at a time",
+    "addHabit": "Add Habit",
+    "deactivate": "Deactivate",
+    "activate": "Activate",
+    "deleteHabit": "Delete Habit",
+    "types": {
+      "exercise": "Exercise",
+      "work": "Work",
+      "fun": "Fun",
+      "other": "Other"
+    },
+    "form": {
+      "title": "Habit Name",
+      "titlePlaceholder": "e.g. Morning run, Read 30 min...",
+      "type": "Type",
+      "save": "Save",
+      "cancel": "Cancel",
+      "titleRequired": "Habit name is required",
+      "typeRequired": "Please select a type"
+    },
+    "progress": {
+      "title": "Today's Progress",
+      "counter": "{completed} / {total} habits done"
+    },
+    "graph": {
+      "title": "Habit History",
+      "tooltip": "{count} habits on {date}",
+      "less": "Less",
+      "more": "More"
+    },
+    "empty": {
+      "noHabits": "No habits yet. Add your first habit!",
+      "noActive": "No active habits. Activate one to get started."
+    },
+    "toast": {
+      "added": "Habit added!",
+      "completed": "Habit completed! +50 pts",
+      "unchecked": "Habit unchecked",
+      "deleted": "Habit deleted",
+      "deactivated": "Habit deactivated",
+      "activated": "Habit activated"
+    },
+    "filters": {
+      "active": "Active",
+      "all": "All"
+    },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive"
+    }
+  },
   "theme": {
     "light": "Light",
     "dark": "Dark",

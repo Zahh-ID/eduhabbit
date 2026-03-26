@@ -225,6 +225,26 @@
       "targetCancelled": "Tujuan tabungan dibatalkan."
     }
   },
+  "profile": {
+    "title": "Profil",
+    "subtitle": "Kelola pengaturan akun kamu",
+    "name": "Nama Tampilan",
+    "namePlaceholder": "Masukkan nama kamu",
+    "status": "Status",
+    "statusPlaceholder": "Apa yang ada di pikiranmu?",
+    "avatar": "Foto Profil",
+    "avatarHint": "JPG, PNG, GIF atau WebP. Maks 2MB.",
+    "save": "Simpan Perubahan",
+    "saving": "Menyimpan...",
+    "saved": "Tersimpan!",
+    "uploadAvatar": "Ganti Foto",
+    "firstStepsBadge": "Lencana Langkah Pertama",
+    "firstStepsBadgeEligible": "Profil kamu sudah lengkap! Klaim lencana di halaman Pencapaian.",
+    "firstStepsBadgeClaimed": "Lencana diklaim! ✓",
+    "errorFileType": "Hanya gambar JPG, PNG, GIF, atau WebP yang diizinkan.",
+    "errorFileSize": "Ukuran file harus di bawah 2MB.",
+    "errorSave": "Gagal menyimpan perubahan. Silakan coba lagi."
+  },
   "theme": {
     "light": "Terang",
     "dark": "Gelap",

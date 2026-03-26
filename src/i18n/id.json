@@ -34,5 +34,49 @@
       "errorEmailTaken": "Email sudah terdaftar",
       "errorGeneric": "Terjadi kesalahan. Silakan coba lagi."
     }
+  },
+  "nav": {
+    "dashboard": "Beranda",
+    "health": "Insight Kesehatan",
+    "todos": "Daftar Tugas",
+    "finance": "Keuangan",
+    "habits": "Kebiasaan",
+    "achievements": "Pencapaian",
+    "profile": "Profil",
+    "logout": "Keluar"
+  },
+  "common": {
+    "loading": "Memuat...",
+    "error": "Terjadi kesalahan",
+    "save": "Simpan",
+    "cancel": "Batal",
+    "delete": "Hapus",
+    "confirm": "Konfirmasi",
+    "close": "Tutup",
+    "edit": "Edit",
+    "add": "Tambah",
+    "back": "Kembali",
+    "next": "Lanjut",
+    "submit": "Kirim",
+    "comingSoon": "Segera Hadir"
+  },
+  "pages": {
+    "dashboard": { "title": "Beranda", "subtitle": "Ringkasan harianmu" },
+    "health": { "title": "Insight Kesehatan", "subtitle": "Pantau kesehatanmu" },
+    "todos": { "title": "Daftar Tugas", "subtitle": "Kelola tugasmu" },
+    "finance": { "title": "Keuangan", "subtitle": "Pantau tabunganmu" },
+    "habits": { "title": "Kebiasaan", "subtitle": "Bangun kebiasaan harian" },
+    "achievements": { "title": "Pencapaian", "subtitle": "Progres dan lencana kamu" },
+    "profile": { "title": "Profil", "subtitle": "Pengaturan akun kamu" }
+  },
+  "theme": {
+    "light": "Terang",
+    "dark": "Gelap",
+    "toggle": "Ganti tema"
+  },
+  "locale": {
+    "en": "English",
+    "id": "Indonesia",
+    "switch": "Ganti bahasa"
   }
 }

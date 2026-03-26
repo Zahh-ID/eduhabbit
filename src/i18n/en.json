@@ -34,5 +34,49 @@
       "errorEmailTaken": "Email is already registered",
       "errorGeneric": "Something went wrong. Please try again."
     }
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "health": "Health Insight",
+    "todos": "To-Do List",
+    "finance": "Finance",
+    "habits": "Habits",
+    "achievements": "Achievements",
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "close": "Close",
+    "edit": "Edit",
+    "add": "Add",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "comingSoon": "Coming Soon"
+  },
+  "pages": {
+    "dashboard": { "title": "Dashboard", "subtitle": "Your daily overview" },
+    "health": { "title": "Health Insight", "subtitle": "Track your wellbeing" },
+    "todos": { "title": "To-Do List", "subtitle": "Manage your tasks" },
+    "finance": { "title": "Finance", "subtitle": "Track your savings" },
+    "habits": { "title": "Habits", "subtitle": "Build daily habits" },
+    "achievements": { "title": "Achievements", "subtitle": "Your progress and badges" },
+    "profile": { "title": "Profile", "subtitle": "Your account settings" }
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "toggle": "Toggle theme"
+  },
+  "locale": {
+    "en": "English",
+    "id": "Indonesia",
+    "switch": "Switch language"
   }
 }

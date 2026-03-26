@@ -333,6 +333,37 @@
       "general": "Umum"
     }
   },
+  "dashboard": {
+    "streak": {
+      "title": "Streak & Level",
+      "days": "hari streak",
+      "level": "Level",
+      "totalXp": "Total XP"
+    },
+    "habits": {
+      "title": "Kebiasaan Hari Ini",
+      "completed": "selesai",
+      "noHabits": "Belum ada kebiasaan. Tambahkan kebiasaan untuk dilacak!"
+    },
+    "savings": {
+      "title": "Tabungan Aktif",
+      "progress": "dari target",
+      "due": "Tenggat",
+      "noTarget": "Tidak ada target tabungan aktif"
+    },
+    "todos": {
+      "title": "Tugas Terbaru",
+      "due": "Tenggat",
+      "allDone": "Semua beres! Tidak ada yang tertunda."
+    },
+    "health": {
+      "title": "Check-in Kesehatan Terakhir",
+      "mood": "Cek Suasana Hati",
+      "sleep": "Analisis Tidur",
+      "nutrition": "Saran Nutrisi",
+      "noCheckIn": "Belum ada check-in kesehatan"
+    }
+  },
   "theme": {
     "light": "Terang",
     "dark": "Gelap",

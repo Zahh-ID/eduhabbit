@@ -333,6 +333,37 @@
       "general": "General"
     }
   },
+  "dashboard": {
+    "streak": {
+      "title": "Streak & Level",
+      "days": "day streak",
+      "level": "Level",
+      "totalXp": "Total XP"
+    },
+    "habits": {
+      "title": "Today's Habits",
+      "completed": "completed",
+      "noHabits": "No habits yet. Add some habits to track!"
+    },
+    "savings": {
+      "title": "Active Savings",
+      "progress": "of goal",
+      "due": "Due",
+      "noTarget": "No active savings target"
+    },
+    "todos": {
+      "title": "Recent Todos",
+      "due": "Due",
+      "allDone": "All caught up! Nothing pending."
+    },
+    "health": {
+      "title": "Last Health Check-in",
+      "mood": "Mood Check",
+      "sleep": "Sleep Analysis",
+      "nutrition": "Nutrition Advice",
+      "noCheckIn": "No health check-ins yet"
+    }
+  },
   "theme": {
     "light": "Light",
     "dark": "Dark",

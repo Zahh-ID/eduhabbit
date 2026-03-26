@@ -225,6 +225,64 @@
       "targetCancelled": "Tujuan tabungan dibatalkan."
     }
   },
+  "health": {
+    "mood": {
+      "title": "Pemeriksa Suasana Hati",
+      "description": "Periksa suasana hatimu dan dapatkan saran personal",
+      "label": "Bagaimana perasaanmu?",
+      "options": {
+        "great": "Luar Biasa",
+        "good": "Baik",
+        "okay": "Biasa",
+        "bad": "Buruk",
+        "awful": "Sangat Buruk"
+      },
+      "stressSource": "Apa yang ada di pikiranmu? (opsional)",
+      "sleepQuality": "Kualitas tidur tadi malam (1-10)",
+      "submit": "Dapatkan Saran",
+      "alreadyDone": "Kamu sudah melakukan check-in hari ini",
+      "result": "Saran personal kamu"
+    },
+    "sleep": {
+      "title": "Analisis Tidur",
+      "description": "Analisis tidurmu dan dapatkan tips perbaikan",
+      "sleepStart": "Kapan kamu mulai tidur?",
+      "sleepEnd": "Kapan kamu bangun?",
+      "submit": "Analisis Tidur",
+      "alreadyDone": "Kamu sudah menganalisis tidurmu hari ini",
+      "result": "Analisis tidur kamu"
+    },
+    "nutrition": {
+      "title": "Penasihat Nutrisi",
+      "description": "Dapatkan rencana nutrisi harian yang personal",
+      "dietType": "Jenis diet kamu",
+      "dietOptions": {
+        "balanced": "Seimbang",
+        "vegetarian": "Vegetarian",
+        "vegan": "Vegan",
+        "keto": "Keto",
+        "paleo": "Paleo",
+        "other": "Lainnya"
+      },
+      "activityLevel": "Tingkat aktivitasmu",
+      "activityOptions": {
+        "sedentary": "Tidak Aktif",
+        "light": "Ringan",
+        "moderate": "Sedang",
+        "active": "Aktif",
+        "very_active": "Sangat Aktif"
+      },
+      "submit": "Dapatkan Rencana Nutrisi",
+      "alreadyDone": "Kamu sudah mendapatkan rencana nutrisi hari ini",
+      "result": "Rencana nutrisi kamu"
+    },
+    "errors": {
+      "unavailable": "Layanan AI sedang tidak tersedia",
+      "busy": "Layanan AI sibuk, coba lagi sebentar lagi",
+      "failed": "Gagal mendapatkan saran, silakan coba lagi"
+    },
+    "points": "+25 poin diperoleh!"
+  },
   "profile": {
     "title": "Profil",
     "subtitle": "Kelola pengaturan akun kamu",

@@ -225,6 +225,64 @@
       "targetCancelled": "Savings goal cancelled."
     }
   },
+  "health": {
+    "mood": {
+      "title": "Mood Checker",
+      "description": "Check in with your mood and get personalized advice",
+      "label": "How are you feeling?",
+      "options": {
+        "great": "Great",
+        "good": "Good",
+        "okay": "Okay",
+        "bad": "Bad",
+        "awful": "Awful"
+      },
+      "stressSource": "What's on your mind? (optional)",
+      "sleepQuality": "Sleep quality last night (1-10)",
+      "submit": "Get Advice",
+      "alreadyDone": "You've already checked in today",
+      "result": "Your personalized advice"
+    },
+    "sleep": {
+      "title": "Sleep Analysis",
+      "description": "Analyze your sleep and get improvement tips",
+      "sleepStart": "When did you go to sleep?",
+      "sleepEnd": "When did you wake up?",
+      "submit": "Analyze Sleep",
+      "alreadyDone": "You've already analyzed your sleep today",
+      "result": "Your sleep analysis"
+    },
+    "nutrition": {
+      "title": "Nutrition Advisor",
+      "description": "Get a personalized daily nutrition plan",
+      "dietType": "Your diet type",
+      "dietOptions": {
+        "balanced": "Balanced",
+        "vegetarian": "Vegetarian",
+        "vegan": "Vegan",
+        "keto": "Keto",
+        "paleo": "Paleo",
+        "other": "Other"
+      },
+      "activityLevel": "Your activity level",
+      "activityOptions": {
+        "sedentary": "Sedentary",
+        "light": "Light",
+        "moderate": "Moderate",
+        "active": "Active",
+        "very_active": "Very Active"
+      },
+      "submit": "Get Nutrition Plan",
+      "alreadyDone": "You've already gotten your nutrition plan today",
+      "result": "Your nutrition plan"
+    },
+    "errors": {
+      "unavailable": "AI service is currently unavailable",
+      "busy": "AI service is busy, please try again in a moment",
+      "failed": "Failed to get advice, please try again"
+    },
+    "points": "+25 points earned!"
+  },
   "profile": {
     "title": "Profile",
     "subtitle": "Manage your account settings",

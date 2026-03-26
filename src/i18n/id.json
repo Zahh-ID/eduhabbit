@@ -203,6 +203,15 @@
     "badgeEarned": "Diraih",
     "badgeEligible": "Bisa Diklaim",
     "badgeLocked": "Terkunci",
+    "remaining": "Sisa:",
+    "claim": "Klaim",
+    "badgeDesc": {
+      "first_saver": "Tambahkan uang ke tabungan untuk pertama kalinya",
+      "junior_accountant": "Selesaikan 1 target tabungan",
+      "senior_accountant": "Selesaikan 3 target tabungan",
+      "financial_wizard": "Selesaikan 5 target tabungan",
+      "big_saver": "Hemat total 1.000.000"
+    },
     "errors": {
       "activeTargetExists": "Kamu sudah memiliki tujuan tabungan aktif. Selesaikan atau batalkan terlebih dahulu.",
       "invalidAmount": "Jumlah harus lebih besar dari 0.",

@@ -203,6 +203,15 @@
     "badgeEarned": "Earned",
     "badgeEligible": "Eligible to Claim",
     "badgeLocked": "Locked",
+    "remaining": "Remaining:",
+    "claim": "Claim",
+    "badgeDesc": {
+      "first_saver": "Add money to savings for the first time",
+      "junior_accountant": "Complete 1 saving target",
+      "senior_accountant": "Complete 3 saving targets",
+      "financial_wizard": "Complete 5 saving targets",
+      "big_saver": "Save a total of 1,000,000"
+    },
     "errors": {
       "activeTargetExists": "You already have an active savings goal. Complete or cancel it first.",
       "invalidAmount": "Amount must be greater than 0.",

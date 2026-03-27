@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
 
     let advice: string;
     try {
-      const model = getGeminiModel("gemini-2.0-flash");
+      const model = getGeminiModel("gemini-2.5-flash-lite");
       const result = await model.generateContent(prompt);
       advice = result.response.text();
     } catch (err: unknown) {

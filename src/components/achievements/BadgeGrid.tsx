@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { LuCheck } from "react-icons/lu";
 import { BadgeCategory } from "@/lib/achievements";
 import styles from "./BadgeGrid.module.css";
 
@@ -45,7 +46,7 @@ function BadgeCard({ badge, onClaim }: { badge: BadgeStatus; onClaim: (id: strin
     >
       {badge.claimed && (
         <span className={styles.checkmark} aria-label="claimed">
-          ✓
+          <LuCheck size={18} />
         </span>
       )}
       <p className={styles.badgeName}>{badge.name}</p>

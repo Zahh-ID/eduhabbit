@@ -255,14 +255,11 @@
     "nutrition": {
       "title": "Nutrition Advisor",
       "description": "Get a personalized daily nutrition plan",
-      "dietType": "Your diet type",
+      "dietType": "Your eating habit",
       "dietOptions": {
-        "balanced": "Balanced",
-        "vegetarian": "Vegetarian",
-        "vegan": "Vegan",
-        "keto": "Keto",
-        "paleo": "Paleo",
-        "other": "Other"
+        "fasting": "Fasting",
+        "diet": "Diet",
+        "normal": "Normal"
       },
       "activityLevel": "Your activity level",
       "activityOptions": {
@@ -298,7 +295,7 @@
     "uploadAvatar": "Change Photo",
     "firstStepsBadge": "First Steps Badge",
     "firstStepsBadgeEligible": "You've completed your profile! Claim your badge on the Achievements page.",
-    "firstStepsBadgeClaimed": "Badge claimed! ✓",
+    "firstStepsBadgeClaimed": "Badge claimed!",
     "errorFileType": "Only JPG, PNG, GIF, or WebP images are allowed.",
     "errorFileSize": "File size must be under 2MB.",
     "errorSave": "Failed to save changes. Please try again."

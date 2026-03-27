@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { LuCheck, LuCircle } from "react-icons/lu";
 import styles from "./HabitsWidget.module.css";
 
 interface HabitRow {
@@ -46,7 +47,7 @@ export function HabitsWidget({ habits, labels }: Props) {
             {habits.map((habit) => (
               <li key={habit.id} className={styles.item}>
                 <span className={habit.completed ? styles.checkDone : styles.checkOpen}>
-                  {habit.completed ? "✓" : "○"}
+                  {habit.completed ? <LuCheck size={16} /> : <LuCircle size={16} />}
                 </span>
                 <span className={habit.completed ? styles.habitTitleDone : styles.habitTitle}>
                   {habit.title}

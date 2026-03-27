@@ -9,6 +9,7 @@ import { getGeminiModel } from "@/lib/gemini";
 const sleepSchema = z.object({
   sleepStart: z.string().min(1),
   sleepEnd: z.string().min(1),
+  locale: z.string().optional(),
 });
 
 export async function GET() {
@@ -67,13 +68,17 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { sleepStart, sleepEnd } = parsed.data;
+    const { sleepStart, sleepEnd, locale } = parsed.data;
     const hours = (
       (new Date(sleepEnd).getTime() - new Date(sleepStart).getTime()) /
       (1000 * 60 * 60)
     ).toFixed(1);
 
-    const prompt = `You are a sleep health expert. The user slept from ${sleepStart} to ${sleepEnd} (${hours} hours). Analyze the sleep duration, provide quality assessment, and give 3 actionable tips for better sleep (~150 words).`;
+    let prompt = `You are a sleep health expert. The user slept from ${sleepStart} to ${sleepEnd} (${hours} hours). Analyze the sleep duration, provide quality assessment, and give 3 actionable tips for better sleep (~150 words).`;
+
+    if (locale === "id") {
+      prompt += ` You MUST respond entirely in the Indonesian language.`;
+    }
 
     let analysis: string;
     try {

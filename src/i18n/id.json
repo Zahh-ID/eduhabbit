@@ -255,14 +255,11 @@
     "nutrition": {
       "title": "Penasihat Nutrisi",
       "description": "Dapatkan rencana nutrisi harian yang personal",
-      "dietType": "Jenis diet kamu",
+      "dietType": "Pola makan kamu",
       "dietOptions": {
-        "balanced": "Seimbang",
-        "vegetarian": "Vegetarian",
-        "vegan": "Vegan",
-        "keto": "Keto",
-        "paleo": "Paleo",
-        "other": "Lainnya"
+        "fasting": "Puasa",
+        "diet": "Diet",
+        "normal": "Normal"
       },
       "activityLevel": "Tingkat aktivitasmu",
       "activityOptions": {
@@ -298,7 +295,7 @@
     "uploadAvatar": "Ganti Foto",
     "firstStepsBadge": "Lencana Langkah Pertama",
     "firstStepsBadgeEligible": "Profil kamu sudah lengkap! Klaim lencana di halaman Pencapaian.",
-    "firstStepsBadgeClaimed": "Lencana diklaim! ✓",
+    "firstStepsBadgeClaimed": "Lencana diklaim!",
     "errorFileType": "Hanya gambar JPG, PNG, GIF, atau WebP yang diizinkan.",
     "errorFileSize": "Ukuran file harus di bawah 2MB.",
     "errorSave": "Gagal menyimpan perubahan. Silakan coba lagi."

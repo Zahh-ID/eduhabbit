@@ -1,5 +1,6 @@
 "use client";
 import { useTranslations } from "next-intl";
+import { LuCheck, LuTrash2, LuPause, LuPlay } from "react-icons/lu";
 import styles from "./habit-item.module.css";
 
 type HabitType = "exercise" | "work" | "fun" | "other";
@@ -41,7 +42,7 @@ export function HabitItem({ habit, onToggle, onDeactivate, onActivate, onDelete 
             onClick={() => onToggle(habit.id, habit.completedToday)}
             aria-label={habit.completedToday ? t("toast.unchecked") : t("toast.completed")}
           >
-            {habit.completedToday && <span className={styles.checkmark}>✓</span>}
+            {habit.completedToday && <span className={styles.checkmark}><LuCheck size={16} /></span>}
           </button>
         ) : (
           <div className={styles.inactiveDot} />
@@ -67,7 +68,7 @@ export function HabitItem({ habit, onToggle, onDeactivate, onActivate, onDelete 
             onClick={() => onDeactivate(habit.id)}
             title={t("deactivate")}
           >
-            ⏸
+            <LuPause size={16} />
           </button>
         ) : (
           <button
@@ -75,7 +76,7 @@ export function HabitItem({ habit, onToggle, onDeactivate, onActivate, onDelete 
             onClick={() => onActivate(habit.id)}
             title={t("activate")}
           >
-            ▶
+            <LuPlay size={16} />
           </button>
         )}
         <button
@@ -83,7 +84,7 @@ export function HabitItem({ habit, onToggle, onDeactivate, onActivate, onDelete 
           onClick={() => onDelete(habit.id)}
           title={t("deleteHabit")}
         >
-          🗑️
+          <LuTrash2 size={16} />
         </button>
       </div>
     </div>

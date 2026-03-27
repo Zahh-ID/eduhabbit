@@ -10,6 +10,7 @@ const moodSchema = z.object({
   mood: z.enum(["great", "good", "okay", "bad", "awful"]),
   stressSource: z.string().max(500).optional(),
   sleepQuality: z.number().int().min(1).max(10),
+  locale: z.string().optional(),
 });
 
 export async function GET() {
@@ -64,9 +65,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { mood, stressSource, sleepQuality } = parsed.data;
+    const { mood, stressSource, sleepQuality, locale } = parsed.data;
 
-    const prompt = `You are a supportive wellness coach. The user feels ${mood}, stress source: '${stressSource ?? "none"}', sleep quality: ${sleepQuality}/10. Give concise, empathetic, actionable advice in 2-3 short paragraphs (~150 words).`;
+    let prompt = `You are a supportive wellness coach. The user feels ${mood}, stress source: '${stressSource ?? "none"}', sleep quality: ${sleepQuality}/10. Give concise, empathetic, actionable advice in 2-3 short paragraphs (~150 words).`;
+
+    if (locale === "id") {
+      prompt += ` You MUST respond entirely in the Indonesian language.`;
+    }
 
     let advice: string;
     try {

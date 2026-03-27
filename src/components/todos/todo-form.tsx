@@ -14,7 +14,15 @@ export function TodoForm({ todo, onSubmit, onCancel }: TodoFormProps) {
   const t = useTranslations("todos");
   const [title, setTitle] = useState(todo?.title ?? "");
   const [description, setDescription] = useState(todo?.description ?? "");
-  const [dueDate, setDueDate] = useState(todo?.dueDate ?? "");
+  
+  // Normalizes initial date values for the datetime-local input parser
+  const normalizeDateForInput = (dateStr?: string | null) => {
+    if (!dateStr) return "";
+    if (dateStr.includes("T")) return dateStr.slice(0, 16);
+    return `${dateStr}T00:00`;
+  };
+  
+  const [dueDate, setDueDate] = useState(normalizeDateForInput(todo?.dueDate));
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -58,7 +66,7 @@ export function TodoForm({ todo, onSubmit, onCancel }: TodoFormProps) {
         <div className={styles.field}>
           <label className={styles.label}>{t("form.dueDate")}</label>
           <input
-            type="date"
+            type="datetime-local"
             className={styles.input}
             value={dueDate}
             onChange={e => setDueDate(e.target.value)}

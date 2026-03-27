@@ -1,5 +1,6 @@
 "use client";
 import { useTranslations } from "next-intl";
+import { LuCheck, LuX, LuTriangleAlert, LuClock, LuCalendarDays, LuPencil, LuBan, LuTrash2, LuUndo2 } from "react-icons/lu";
 import { type Todo } from "@/db/schema";
 import styles from "./todo-item.module.css";
 
@@ -14,6 +15,10 @@ interface TodoItemProps {
 
 function isOverdue(dueDate: string | null): boolean {
   if (!dueDate) return false;
+  const hasTime = dueDate.includes('T') || dueDate.includes(':');
+  if (hasTime) {
+    return new Date(dueDate).getTime() < Date.now();
+  }
   return new Date(dueDate) < new Date(new Date().toDateString());
 }
 
@@ -24,7 +29,13 @@ function isDueToday(dueDate: string | null): boolean {
 
 function formatDate(dueDate: string | null): string {
   if (!dueDate) return "";
-  return new Date(dueDate).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+  const d = new Date(dueDate);
+  const hasTime = dueDate.includes('T') || dueDate.includes(':');
+  
+  const dateOptions: Intl.DateTimeFormatOptions = { month: "short", day: "numeric", year: "numeric" };
+  const timeOptions: Intl.DateTimeFormatOptions = hasTime ? { hour: "numeric", minute: "2-digit" } : {};
+  
+  return d.toLocaleString(undefined, { ...dateOptions, ...timeOptions });
 }
 
 export function TodoItem({ todo, onComplete, onEdit, onCancel, onRestore, onDelete }: TodoItemProps) {
@@ -38,8 +49,8 @@ export function TodoItem({ todo, onComplete, onEdit, onCancel, onRestore, onDele
         {todo.status === "pending" && (
           <button className={styles.checkBtn} onClick={() => onComplete(todo.id)} title={t("form.save")} />
         )}
-        {todo.status === "done" && <span className={styles.checkDone}>✓</span>}
-        {todo.status === "cancelled" && <span className={styles.checkCancelled}>✕</span>}
+        {todo.status === "done" && <span className={styles.checkDone}><LuCheck size={16} /></span>}
+        {todo.status === "cancelled" && <span className={styles.checkCancelled}><LuX size={16} /></span>}
       </div>
 
       <div className={styles.content}>
@@ -52,7 +63,19 @@ export function TodoItem({ todo, onComplete, onEdit, onCancel, onRestore, onDele
         )}
         {todo.dueDate && (
           <span className={`${styles.dueDate} ${overdue ? styles.overdueLabel : ""} ${dueToday ? styles.dueTodayLabel : ""}`}>
-            {overdue ? `⚠ ${t("overdue")} · ` : dueToday ? `⏰ ${t("dueToday")} · ` : "📅 "}
+            {overdue ? (
+              <span style={{ display: "inline-flex", alignItems: "center", gap: "0.25rem", marginRight: "0.25rem" }}>
+                <LuTriangleAlert size={14} /> {t("overdue")} &middot;
+              </span>
+            ) : dueToday ? (
+              <span style={{ display: "inline-flex", alignItems: "center", gap: "0.25rem", marginRight: "0.25rem" }}>
+                <LuClock size={14} /> {t("dueToday")} &middot;
+              </span>
+            ) : (
+              <span style={{ display: "inline-flex", alignItems: "center", gap: "0.25rem", marginRight: "0.25rem" }}>
+                <LuCalendarDays size={14} />
+              </span>
+            )}
             {formatDate(todo.dueDate)}
           </span>
         )}
@@ -61,14 +84,14 @@ export function TodoItem({ todo, onComplete, onEdit, onCancel, onRestore, onDele
       <div className={styles.actions}>
         {todo.status === "pending" && (
           <>
-            <button className={styles.actionBtn} onClick={() => onEdit(todo)} title={t("editTask")}>✏️</button>
-            <button className={styles.actionBtn} onClick={() => onCancel(todo.id)} title={t("cancelTask")}>🚫</button>
+            <button className={styles.actionBtn} onClick={() => onEdit(todo)} title={t("editTask")}><LuPencil size={16} /></button>
+            <button className={styles.actionBtn} onClick={() => onCancel(todo.id)} title={t("cancelTask")}><LuBan size={16} /></button>
           </>
         )}
         {(todo.status === "done" || todo.status === "cancelled") && (
-          <button className={styles.actionBtn} onClick={() => onRestore(todo.id)} title={t("restoreTask")}>↩️</button>
+          <button className={styles.actionBtn} onClick={() => onRestore(todo.id)} title={t("restoreTask")}><LuUndo2 size={16} /></button>
         )}
-        <button className={`${styles.actionBtn} ${styles.deleteBtn}`} onClick={() => onDelete(todo.id)} title={t("deleteTask")}>🗑️</button>
+        <button className={`${styles.actionBtn} ${styles.deleteBtn}`} onClick={() => onDelete(todo.id)} title={t("deleteTask")}><LuTrash2 size={16} /></button>
       </div>
     </div>
   );

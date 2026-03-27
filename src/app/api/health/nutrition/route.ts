@@ -7,8 +7,9 @@ import { nutritionLogs, pointsHistory } from "@/db/schema";
 import { getGeminiModel } from "@/lib/gemini";
 
 const nutritionSchema = z.object({
-  dietType: z.enum(["balanced", "vegetarian", "vegan", "keto", "paleo", "other"]),
+  dietType: z.enum(["fasting", "diet", "normal"]),
   activityLevel: z.enum(["sedentary", "light", "moderate", "active", "very_active"]),
+  locale: z.string().optional(),
 });
 
 export async function GET() {
@@ -67,9 +68,17 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { dietType, activityLevel } = parsed.data;
+    const { dietType, activityLevel, locale } = parsed.data;
 
-    const prompt = `You are a nutrition expert. The user follows a ${dietType} diet with ${activityLevel} activity level. Create a practical daily nutrition plan with meal suggestions and key nutrients to focus on (~200 words).`;
+    let prompt = `You are a nutrition expert. The user follows a ${dietType} diet with ${activityLevel} activity level. Create a practical daily nutrition plan with meal suggestions and key nutrients to focus on (~180 words).`;
+    
+    if (dietType === "fasting") {
+      prompt += ` Since the user is fasting, tailor the plan explicitly for a fasting window (e.g., provide specific meals designed for pre-dawn/Suhoor and sunset/Iftar, or a strict Intermittent Fasting schedule that explicitly skips mid-day meals). NEVER recommend a mid-day meal or lunch.`;
+    }
+
+    if (locale === "id") {
+      prompt += ` You MUST respond entirely in the Indonesian language.`;
+    }
 
     let advice: string;
     try {

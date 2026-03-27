@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { LuCheck, LuX, LuCircle } from "react-icons/lu";
 import styles from "./ActivityCalendar.module.css";
 
 interface DayData {
@@ -277,10 +278,10 @@ export function ActivityCalendar({ labels }: Props) {
                       >
                         <span className={styles.todoCheck}>
                           {todo.status === "done"
-                            ? "✓"
+                            ? <LuCheck size={14} />
                             : todo.status === "cancelled"
-                              ? "✕"
-                              : "○"}
+                              ? <LuX size={14} />
+                              : <LuCircle size={14} />}
                         </span>
                         <span className={styles.todoTitle}>{todo.title}</span>
                         <span className={styles.todoBadge}>

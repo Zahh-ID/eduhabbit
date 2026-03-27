@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import type { SleepAnalysis as SleepAnalysisType } from "@/db/schema";
 import styles from "./SleepAnalysis.module.css";
 
@@ -13,6 +13,7 @@ interface SleepAnalysisProps {
 export function SleepAnalysis({ initialSleep, onSuccess }: SleepAnalysisProps) {
   const t = useTranslations("health.sleep");
   const tErr = useTranslations("health.errors");
+  const locale = useLocale();
 
   const [result, setResult] = useState<SleepAnalysisType | null>(initialSleep);
   const [loading, setLoading] = useState(false);
@@ -30,7 +31,7 @@ export function SleepAnalysis({ initialSleep, onSuccess }: SleepAnalysisProps) {
       const res = await fetch("/api/health/sleep", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sleepStart, sleepEnd }),
+        body: JSON.stringify({ sleepStart, sleepEnd, locale }),
       });
 
       const data = await res.json();

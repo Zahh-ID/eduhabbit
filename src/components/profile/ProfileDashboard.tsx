@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import { LuMedal, LuTarget, LuCheck } from "react-icons/lu";
 import { AvatarUpload } from "./AvatarUpload";
 import { ProfileForm } from "./ProfileForm";
 import styles from "./ProfileDashboard.module.css";
@@ -70,14 +71,18 @@ export function ProfileDashboard({ initialProfile }: ProfileDashboardProps) {
             }`}
           >
             <span className={styles.badgeIcon}>
-              {initialProfile.firstStepsBadgeClaimed ? "🏅" : "🎯"}
+              {initialProfile.firstStepsBadgeClaimed ? <LuMedal /> : <LuTarget />}
             </span>
             <div className={styles.badgeContent}>
               <p className={styles.badgeTitle}>{t("firstStepsBadge")}</p>
               <p className={styles.badgeDescription}>
-                {initialProfile.firstStepsBadgeClaimed
-                  ? t("firstStepsBadgeClaimed")
-                  : t("firstStepsBadgeEligible")}
+                {initialProfile.firstStepsBadgeClaimed ? (
+                  <>
+                    {t("firstStepsBadgeClaimed")} <LuCheck aria-hidden="true" />
+                  </>
+                ) : (
+                  t("firstStepsBadgeEligible")
+                )}
               </p>
               {!initialProfile.firstStepsBadgeClaimed && isEligible && (
                 <Link href="/achievements" className={styles.badgeLink}>

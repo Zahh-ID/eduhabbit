@@ -1,0 +1,147 @@
+.bentoSection {
+  padding: 8rem 2rem;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  position: relative;
+  z-index: 10;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 4rem;
+}
+
+.badge {
+  display: inline-flex;
+  padding: 0.35rem 0.85rem;
+  border-radius: 100px;
+  background: rgba(124, 58, 237, 0.1);
+  color: #a78bfa;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.header h2 {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.header p {
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 250px;
+  gap: 1.5rem;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px);
+}
+
+.largeCard {
+  grid-column: span 2;
+  grid-row: span 2;
+  background: linear-gradient(145deg, rgba(124, 58, 237, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+}
+
+.wideCard {
+  grid-column: span 2;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.iconWrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(124, 58, 237, 0.15);
+  color: #a78bfa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blueIcon {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+}
+
+.greenIcon {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+}
+
+.yellowIcon {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+}
+
+.cardHeader h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.cardBody {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  font-size: 1.125rem;
+  flex-grow: 1;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .largeCard, .wideCard {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+  .largeCard, .wideCard, .card {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}

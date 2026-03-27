@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { LuSun, LuMoon } from "react-icons/lu";
 import styles from "./theme-toggle.module.css";
 
 export function ThemeToggle() {
@@ -29,7 +30,7 @@ export function ThemeToggle() {
       aria-label={t("toggle")}
       title={t("toggle")}
     >
-      {theme === "dark" ? "☀️" : "🌙"}
+      {theme === "dark" ? <LuSun size={18} /> : <LuMoon size={18} />}
     </button>
   );
 }

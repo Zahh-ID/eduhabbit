@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import type { NutritionLog } from "@/db/schema";
 import styles from "./NutritionAdvisor.module.css";
 
@@ -13,12 +13,13 @@ interface NutritionAdvisorProps {
 export function NutritionAdvisor({ initialNutrition, onSuccess }: NutritionAdvisorProps) {
   const t = useTranslations("health.nutrition");
   const tErr = useTranslations("health.errors");
+  const locale = useLocale();
 
   const [result, setResult] = useState<NutritionLog | null>(initialNutrition);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const [dietType, setDietType] = useState("balanced");
+  const [dietType, setDietType] = useState("normal");
   const [activityLevel, setActivityLevel] = useState("moderate");
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -30,7 +31,7 @@ export function NutritionAdvisor({ initialNutrition, onSuccess }: NutritionAdvis
       const res = await fetch("/api/health/nutrition", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ dietType, activityLevel }),
+        body: JSON.stringify({ dietType, activityLevel, locale }),
       });
 
       const data = await res.json();
@@ -75,7 +76,7 @@ export function NutritionAdvisor({ initialNutrition, onSuccess }: NutritionAdvis
           onChange={(e) => setDietType(e.target.value)}
           disabled={loading}
         >
-          {(["balanced", "vegetarian", "vegan", "keto", "paleo", "other"] as const).map(
+          {(["fasting", "diet", "normal"] as const).map(
             (opt) => (
               <option key={opt} value={opt}>
                 {t(`dietOptions.${opt}`)}

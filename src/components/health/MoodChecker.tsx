@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import type { Mood } from "@/db/schema";
 import styles from "./MoodChecker.module.css";
 
@@ -13,6 +13,7 @@ interface MoodCheckerProps {
 export function MoodChecker({ initialMood, onSuccess }: MoodCheckerProps) {
   const t = useTranslations("health.mood");
   const tErr = useTranslations("health.errors");
+  const locale = useLocale();
 
   const [result, setResult] = useState<Mood | null>(initialMood);
   const [loading, setLoading] = useState(false);
@@ -31,7 +32,7 @@ export function MoodChecker({ initialMood, onSuccess }: MoodCheckerProps) {
       const res = await fetch("/api/health/mood", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ mood, stressSource, sleepQuality }),
+        body: JSON.stringify({ mood, stressSource, sleepQuality, locale }),
       });
 
       const data = await res.json();

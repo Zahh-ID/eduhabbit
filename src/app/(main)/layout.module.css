@@ -19,6 +19,11 @@
 @media (min-width: 1024px) {
   .content {
     margin-left: 260px;
+    transition: margin-left 0.25s ease;
+  }
+
+  .shellCollapsed .content {
+    margin-left: 64px;
   }
 }
 

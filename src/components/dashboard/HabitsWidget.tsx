@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import styles from "./HabitsWidget.module.css";
 
 interface HabitRow {
@@ -20,7 +23,11 @@ export function HabitsWidget({ habits, labels }: Props) {
   const total = habits.length;
 
   return (
-    <div className={styles.card}>
+    <motion.div
+      className={styles.card}
+      whileHover={{ y: -4, boxShadow: "0 8px 32px rgba(34, 197, 94, 0.12), 0 4px 24px rgba(0,0,0,0.15)" }}
+      transition={{ duration: 0.2 }}
+    >
       <h2 className={styles.title}>{labels.title}</h2>
       {total === 0 ? (
         <p className={styles.empty}>{labels.noHabits}</p>
@@ -49,6 +56,6 @@ export function HabitsWidget({ habits, labels }: Props) {
           </ul>
         </>
       )}
-    </div>
+    </motion.div>
   );
 }

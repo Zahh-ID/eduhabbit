@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { eq, and } from "drizzle-orm";
+import { eq, and, sql } from "drizzle-orm";
 import { auth } from "@/lib/auth";
 import { db } from "@/db";
 import { habits, habitLogs } from "@/db/schema";
@@ -13,29 +13,44 @@ export async function GET(_request: NextRequest) {
 
     const today = new Date().toISOString().slice(0, 10);
 
-    const activeHabits = await db
+    const allHabits = await db
       .select()
       .from(habits)
-      .where(and(eq(habits.userId, session.user.id), eq(habits.active, true)));
+      .where(eq(habits.userId, session.user.id));
 
-    const todayLogs = await db
-      .select()
-      .from(habitLogs)
-      .where(eq(habitLogs.date, today));
+    const habitIds = allHabits.map((h) => h.id);
+
+    const todayLogs =
+      habitIds.length > 0
+        ? await db
+            .select()
+            .from(habitLogs)
+            .where(
+              and(
+                eq(habitLogs.date, today),
+                eq(habitLogs.completed, true),
+                sql`${habitLogs.habitId} in (${sql.join(
+                  habitIds.map((id) => sql`${id}`),
+                  sql`, `
+                )})`
+              )
+            )
+        : [];
 
     const loggedHabitIds = new Set(todayLogs.map((log) => log.habitId));
 
-    const habitsWithStatus = activeHabits.map((habit) => ({
+    const habitsWithStatus = allHabits.map((habit) => ({
       ...habit,
       completedToday: loggedHabitIds.has(habit.id),
     }));
 
-    const completed = habitsWithStatus.filter((h) => h.completedToday).length;
+    const activeHabits = habitsWithStatus.filter((h) => h.active);
+    const completed = activeHabits.filter((h) => h.completedToday).length;
 
     return NextResponse.json({
       habits: habitsWithStatus,
       summary: {
-        total: habitsWithStatus.length,
+        total: activeHabits.length,
         completed,
       },
     });

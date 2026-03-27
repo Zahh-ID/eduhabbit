@@ -1,0 +1,146 @@
+.card {
+  background: var(--color-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-glass-border);
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+}
+
+.title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  margin: 0 0 1.25rem 0;
+}
+
+/* ─── Chart ───────────────────────────────────────────────────────────────── */
+
+.chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  height: 10rem;
+  padding-bottom: 0.25rem;
+}
+
+.barCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  height: 100%;
+}
+
+.barWrapper {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.bar {
+  width: 70%;
+  max-width: 2.5rem;
+  border-radius: 0.375rem 0.375rem 0.125rem 0.125rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: height 0.4s ease;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.barToday {
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+}
+
+.segHabit {
+  background: #22c55e;
+  transition: height 0.3s ease;
+}
+
+.segTodo {
+  background: #3b82f6;
+  transition: height 0.3s ease;
+}
+
+.segHealth {
+  background: #a855f7;
+  transition: height 0.3s ease;
+}
+
+.dayLabel {
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.dayToday {
+  color: #3b82f6;
+  font-weight: 700;
+}
+
+/* ─── Legend ───────────────────────────────────────────────────────────────── */
+
+.legend {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-glass-border);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
+}
+
+.legendDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+}
+
+.legendHabit {
+  background: #22c55e;
+}
+
+.legendTodo {
+  background: #3b82f6;
+}
+
+.legendHealth {
+  background: #a855f7;
+}
+
+/* ─── Loading ─────────────────────────────────────────────────────────────── */
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10rem;
+}
+
+.spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid var(--color-glass-border);
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

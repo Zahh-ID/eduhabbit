@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import styles from "./SavingsWidget.module.css";
 
 interface SavingsData {
@@ -24,7 +27,11 @@ export function SavingsWidget({ savings, labels }: Props) {
       : 0;
 
   return (
-    <div className={styles.card}>
+    <motion.div
+      className={styles.card}
+      whileHover={{ y: -4, boxShadow: "0 8px 32px rgba(6, 182, 212, 0.12), 0 4px 24px rgba(0,0,0,0.15)" }}
+      transition={{ duration: 0.2 }}
+    >
       <h2 className={styles.title}>{labels.title}</h2>
       {!savings ? (
         <p className={styles.empty}>{labels.noTarget}</p>
@@ -51,6 +58,6 @@ export function SavingsWidget({ savings, labels }: Props) {
           )}
         </>
       )}
-    </div>
+    </motion.div>
   );
 }

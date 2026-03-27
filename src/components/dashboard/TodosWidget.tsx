@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import styles from "./TodosWidget.module.css";
 
 interface TodoRow {
@@ -17,7 +20,11 @@ interface Props {
 
 export function TodosWidget({ todos, labels }: Props) {
   return (
-    <div className={styles.card}>
+    <motion.div
+      className={styles.card}
+      whileHover={{ y: -4, boxShadow: "0 8px 32px rgba(59, 130, 246, 0.12), 0 4px 24px rgba(0,0,0,0.15)" }}
+      transition={{ duration: 0.2 }}
+    >
       <h2 className={styles.title}>{labels.title}</h2>
       {todos.length === 0 ? (
         <p className={styles.empty}>{labels.allDone}</p>
@@ -35,6 +42,6 @@ export function TodosWidget({ todos, labels }: Props) {
           ))}
         </ul>
       )}
-    </div>
+    </motion.div>
   );
 }

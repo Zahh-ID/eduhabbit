@@ -1,0 +1,106 @@
+.container {
+  position: relative;
+  min-height: 100%;
+}
+
+.decorLayer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Gradient Orbs ───────────────────────────────────────────────────────── */
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.12;
+}
+
+.orbBlue {
+  width: 24rem;
+  height: 24rem;
+  background: radial-gradient(circle, #3b82f6, transparent 70%);
+  top: -4rem;
+  right: -6rem;
+}
+
+.orbPurple {
+  width: 20rem;
+  height: 20rem;
+  background: radial-gradient(circle, #8b5cf6, transparent 70%);
+  bottom: 10%;
+  left: -5rem;
+}
+
+.orbCyan {
+  width: 14rem;
+  height: 14rem;
+  background: radial-gradient(circle, #06b6d4, transparent 70%);
+  top: 45%;
+  right: -3rem;
+}
+
+/* ─── Geometric Shapes ────────────────────────────────────────────────────── */
+
+.shape {
+  position: absolute;
+  border-radius: 0.75rem;
+  opacity: 0.06;
+  border: 1px solid;
+}
+
+.shape1 {
+  width: 3rem;
+  height: 3rem;
+  border-color: #3b82f6;
+  top: 15%;
+  left: 8%;
+  transform: rotate(45deg);
+}
+
+.shape2 {
+  width: 2rem;
+  height: 2rem;
+  border-color: #8b5cf6;
+  top: 55%;
+  right: 12%;
+  transform: rotate(30deg);
+  border-radius: 50%;
+}
+
+.shape3 {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-color: #22c55e;
+  bottom: 20%;
+  left: 15%;
+  transform: rotate(15deg);
+}
+
+/* ─── Reduced Motion ──────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .orb,
+  .shape {
+    display: none;
+  }
+}
+
+/* ─── Light Theme Adjustments ─────────────────────────────────────────────── */
+
+[data-theme="light"] .orb {
+  opacity: 0.08;
+}
+
+[data-theme="light"] .shape {
+  opacity: 0.04;
+}

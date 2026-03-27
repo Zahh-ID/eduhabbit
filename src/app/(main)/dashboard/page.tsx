@@ -15,19 +15,31 @@ import {
 } from "@/db/schema";
 import { eq, desc, sql, and } from "drizzle-orm";
 import { getLevelFromPoints } from "@/lib/achievements";
-import { StreakLevelCard } from "@/components/dashboard/StreakLevelCard";
+import { TodaySummary } from "@/components/dashboard/TodaySummary";
+import { ActivityCalendar } from "@/components/dashboard/ActivityCalendar";
+import { WeeklyChart } from "@/components/dashboard/WeeklyChart";
 import { HabitsWidget } from "@/components/dashboard/HabitsWidget";
 import { SavingsWidget } from "@/components/dashboard/SavingsWidget";
 import { TodosWidget } from "@/components/dashboard/TodosWidget";
 import { HealthWidget } from "@/components/dashboard/HealthWidget";
+import { QuoteWidget } from "@/components/dashboard/QuoteWidget";
+import { DashboardShell, DashboardSection } from "@/components/dashboard/DashboardShell";
+import { ParallaxBackground } from "@/components/dashboard/ParallaxBackground";
 import styles from "./page.module.css";
+
+function getGreeting(): string {
+  const hour = new Date().getHours();
+  if (hour < 12) return "Good morning";
+  if (hour < 17) return "Good afternoon";
+  return "Good evening";
+}
 
 export default async function DashboardPage() {
   const session = await auth();
   if (!session?.user?.id) redirect("/login");
 
   const t = await getTranslations("dashboard");
-  const tPages = await getTranslations("pages.dashboard");
+  const tCal = await getTranslations("dashboard.calendar");
 
   const userId = session.user.id;
 
@@ -142,44 +154,100 @@ export default async function DashboardPage() {
       ? healthCandidates.sort((a, b) => (a.date > b.date ? -1 : 1))[0]
       : null;
 
+  // ── Today's health check-in count ─────────────────────────────
+  const todayHealthCheckins = [
+    lastMood?.date === today,
+    lastSleep?.date === today,
+    lastNutrition?.date === today,
+  ].filter(Boolean).length;
+
   // ── Render ──────────────────────────────────────────────────────
   return (
+    <ParallaxBackground>
+    <DashboardShell>
     <div className={styles.container}>
-      <div className={styles.header}>
-        <h1 className={styles.pageTitle}>{tPages("title")}</h1>
-        <p className={styles.pageSubtitle}>{tPages("subtitle")}</p>
-      </div>
-
-      <StreakLevelCard
-        streakDays={streakRow?.currentStreak ?? 0}
-        level={levelData.level}
-        levelTitle={levelData.title}
-        totalXp={totalXp}
+      {/* ── Row 1: Today Summary ── */}
+      <DashboardSection>
+      <TodaySummary
+        greeting={getGreeting()}
+        userName={session.user.name ?? ""}
+        stats={{
+          habitsCompleted: completedHabitIds.size,
+          habitsTotal: activeHabits.length,
+          todosPending: pendingTodos.length,
+          healthCheckins: todayHealthCheckins,
+          streakDays: streakRow?.currentStreak ?? 0,
+        }}
         labels={{
-          title: t("streak.title"),
-          days: t("streak.days"),
-          level: t("streak.level"),
-          totalXp: t("streak.totalXp"),
+          habits: t("summary.habits"),
+          todosPending: t("summary.todosPending"),
+          healthToday: t("summary.healthToday"),
+          streak: t("summary.streak"),
+          dayStreak: t("summary.dayStreak"),
         }}
       />
+      </DashboardSection>
 
-      <div className={styles.grid}>
+      {/* ── Row 2: Calendar + Weekly Chart side by side ── */}
+      <DashboardSection>
+      <div className={styles.middleRow}>
+        <div className={styles.calendarCol}>
+          <ActivityCalendar
+            labels={{
+              title: tCal("title"),
+              today: tCal("today"),
+              habits: tCal("habits"),
+              todos: tCal("todos"),
+              health: tCal("health"),
+              mood: tCal("mood"),
+              sleep: tCal("sleep"),
+              nutrition: tCal("nutrition"),
+              noActivity: tCal("noActivity"),
+              completed: tCal("completed"),
+              pending: tCal("pending"),
+              done: tCal("done"),
+              cancelled: tCal("cancelled"),
+              weekDays: [
+                tCal("weekDays.0"), tCal("weekDays.1"), tCal("weekDays.2"),
+                tCal("weekDays.3"), tCal("weekDays.4"), tCal("weekDays.5"),
+                tCal("weekDays.6"),
+              ],
+              months: [
+                tCal("months.0"), tCal("months.1"), tCal("months.2"),
+                tCal("months.3"), tCal("months.4"), tCal("months.5"),
+                tCal("months.6"), tCal("months.7"), tCal("months.8"),
+                tCal("months.9"), tCal("months.10"), tCal("months.11"),
+              ],
+            }}
+          />
+        </div>
+
+        <div className={styles.sideCol}>
+          <WeeklyChart
+            labels={{
+              title: t("weeklyChart.title"),
+              habits: t("weeklyChart.habits"),
+              todos: t("weeklyChart.todos"),
+              health: t("weeklyChart.health"),
+              activities: t("weeklyChart.activities"),
+            }}
+          />
+          <QuoteWidget
+            labels={{ title: t("quote.title") }}
+          />
+        </div>
+      </div>
+      </DashboardSection>
+
+      {/* ── Row 3: Widget grid ── */}
+      <DashboardSection>
+      <div className={styles.widgetGrid}>
         <HabitsWidget
           habits={habitsData}
           labels={{
             title: t("habits.title"),
             completed: t("habits.completed"),
             noHabits: t("habits.noHabits"),
-          }}
-        />
-
-        <SavingsWidget
-          savings={savingsData}
-          labels={{
-            title: t("savings.title"),
-            progress: t("savings.progress"),
-            due: t("savings.due"),
-            noTarget: t("savings.noTarget"),
           }}
         />
 
@@ -196,6 +264,16 @@ export default async function DashboardPage() {
           }}
         />
 
+        <SavingsWidget
+          savings={savingsData}
+          labels={{
+            title: t("savings.title"),
+            progress: t("savings.progress"),
+            due: t("savings.due"),
+            noTarget: t("savings.noTarget"),
+          }}
+        />
+
         <HealthWidget
           lastCheckIn={lastCheckIn}
           labels={{
@@ -207,6 +285,9 @@ export default async function DashboardPage() {
           }}
         />
       </div>
+      </DashboardSection>
     </div>
+    </DashboardShell>
+    </ParallaxBackground>
   );
 }

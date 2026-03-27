@@ -15,9 +15,13 @@ const protectedRoutes = [
 const authRoutes = ["/login", "/register"];
 
 export async function middleware(request: NextRequest) {
+  const proto = request.headers.get("x-forwarded-proto") ?? "http";
+  const isSecure = proto === "https" || request.url.startsWith("https://");
+
   const token = await getToken({
     req: request,
     secret: process.env.NEXTAUTH_SECRET,
+    secureCookie: isSecure,
   });
 
   const { pathname } = request.nextUrl;

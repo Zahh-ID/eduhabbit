@@ -1,37 +1,54 @@
 .container {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.header {
+/* ─── Middle Row: Calendar + Side Column ──────────────────────────────────── */
+
+.middleRow {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.calendarCol {
+  flex: 1;
+  min-width: 0;
+}
+
+.sideCol {
+  width: 20rem;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 1.25rem;
+  flex-shrink: 0;
 }
 
-.pageTitle {
-  font-size: 1.875rem;
-  font-weight: 700;
-  color: var(--color-text);
-  line-height: 1.2;
-}
+/* ─── Widget Grid ─────────────────────────────────────────────────────────── */
 
-.pageSubtitle {
-  font-size: 1rem;
-  color: var(--color-text-muted);
-}
-
-.grid {
+.widgetGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
 }
 
+/* ─── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .middleRow {
+    flex-direction: column;
+  }
+
+  .sideCol {
+    width: 100%;
+  }
+}
+
 @media (max-width: 768px) {
-  .grid {
+  .widgetGrid {
     grid-template-columns: 1fr;
   }
 }

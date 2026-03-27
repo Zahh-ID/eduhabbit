@@ -3,6 +3,7 @@ import { eq, and, sql } from "drizzle-orm";
 import { auth } from "@/lib/auth";
 import { db } from "@/db";
 import { savingsTargets, savingsTransactions, userBadges } from "@/db/schema";
+import { getBadgeById } from "@/lib/achievements";
 
 const FINANCE_BADGE_IDS = [
   "first_saver",
@@ -69,7 +70,8 @@ export async function GET(_request: NextRequest) {
     };
 
     const result = FINANCE_BADGE_IDS.map((badgeId) => ({
-      badgeId,
+      id: badgeId,
+      name: getBadgeById(badgeId)?.name ?? badgeId,
       eligible: eligibility[badgeId],
       claimed: claimedSet.has(badgeId),
     }));

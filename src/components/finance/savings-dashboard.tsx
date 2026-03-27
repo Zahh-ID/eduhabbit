@@ -71,7 +71,7 @@ export function SavingsDashboard({
     const res = await fetch(`/api/finance/${target.id}/transactions`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount }),
+      body: JSON.stringify({ amount, date: new Date().toISOString().slice(0, 10) }),
     });
     if (res.ok) {
       const result = await res.json();

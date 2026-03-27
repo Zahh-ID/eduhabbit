@@ -334,6 +334,23 @@
     }
   },
   "dashboard": {
+    "summary": {
+      "habits": "Habits",
+      "todosPending": "Pending",
+      "healthToday": "Health",
+      "streak": "Streak",
+      "dayStreak": "Day Streak"
+    },
+    "weeklyChart": {
+      "title": "This Week",
+      "habits": "Habits",
+      "todos": "Tasks",
+      "health": "Health",
+      "activities": "Activities"
+    },
+    "quote": {
+      "title": "Daily Motivation"
+    },
     "streak": {
       "title": "Streak & Level",
       "days": "day streak",
@@ -362,6 +379,23 @@
       "sleep": "Sleep Analysis",
       "nutrition": "Nutrition Advice",
       "noCheckIn": "No health check-ins yet"
+    },
+    "calendar": {
+      "title": "Activity Calendar",
+      "today": "Today",
+      "habits": "Habits",
+      "todos": "Tasks",
+      "health": "Health",
+      "mood": "Mood",
+      "sleep": "Sleep",
+      "nutrition": "Nutrition",
+      "noActivity": "No activity on this day",
+      "completed": "Completed",
+      "pending": "Pending",
+      "done": "Done",
+      "cancelled": "Cancelled",
+      "weekDays": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+      "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     }
   },
   "theme": {

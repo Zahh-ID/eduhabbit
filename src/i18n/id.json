@@ -334,6 +334,23 @@
     }
   },
   "dashboard": {
+    "summary": {
+      "habits": "Kebiasaan",
+      "todosPending": "Tertunda",
+      "healthToday": "Kesehatan",
+      "streak": "Streak",
+      "dayStreak": "Hari Streak"
+    },
+    "weeklyChart": {
+      "title": "Minggu Ini",
+      "habits": "Kebiasaan",
+      "todos": "Tugas",
+      "health": "Kesehatan",
+      "activities": "Aktivitas"
+    },
+    "quote": {
+      "title": "Motivasi Harian"
+    },
     "streak": {
       "title": "Streak & Level",
       "days": "hari streak",
@@ -362,6 +379,23 @@
       "sleep": "Analisis Tidur",
       "nutrition": "Saran Nutrisi",
       "noCheckIn": "Belum ada check-in kesehatan"
+    },
+    "calendar": {
+      "title": "Kalender Aktivitas",
+      "today": "Hari Ini",
+      "habits": "Kebiasaan",
+      "todos": "Tugas",
+      "health": "Kesehatan",
+      "mood": "Suasana Hati",
+      "sleep": "Tidur",
+      "nutrition": "Nutrisi",
+      "noActivity": "Tidak ada aktivitas di hari ini",
+      "completed": "Selesai",
+      "pending": "Tertunda",
+      "done": "Selesai",
+      "cancelled": "Dibatalkan",
+      "weekDays": ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"],
+      "months": ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
     }
   },
   "theme": {

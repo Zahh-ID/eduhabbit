@@ -14,13 +14,6 @@
   z-index: 50;
 }
 
-/* Hide navbar on desktop — sidebar handles it */
-@media (min-width: 1024px) {
-  .navbar {
-    display: none;
-  }
-}
-
 .menuBtn {
   display: flex;
   align-items: center;
@@ -89,3 +82,15 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+/* On desktop: hide hamburger and brand title — sidebar handles branding */
+@media (min-width: 1024px) {
+  .menuBtn {
+    display: none;
+  }
+
+  .title {
+    display: none;
+  }
+}
+

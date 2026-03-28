@@ -25,5 +25,5 @@ jobs:
             npm ci
             npm run build
             npm run db:migrate
-            # Restart the app using PM2
-            pm2 restart eduhabit || pm2 start npm --name "eduhabit" -- start
+            # Restart the app using systemd
+            sudo systemctl restart eduhabit

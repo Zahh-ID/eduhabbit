@@ -1,0 +1,29 @@
+name: Deploy EduHabit
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd ${{ secrets.REMOTE_TARGET }}
+            git pull origin master
+            npm install
+            npm run build
+            npm run db:migrate
+            # Restart the app using PM2 (assuming it's already set up or start it if not)
+            pm2 restart eduhabit || pm2 start npm --name "eduhabit" -- start

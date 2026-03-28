@@ -26,8 +26,10 @@ jobs:
             cd /home/Nabigh/eduhabbit
             timeout 60 git pull origin master
             export NODE_OPTIONS="--max-old-space-size=1024"
-            timeout 300 npm install
-            timeout 120 npm rebuild better-sqlite3
-            timeout 1800 npm run build
-            timeout 60 npm run db:migrate
+            # Install pnpm if not already available
+            command -v pnpm || npm install -g pnpm
+            timeout 300 pnpm install --frozen-lockfile
+            timeout 120 pnpm rebuild better-sqlite3
+            timeout 1800 pnpm run build
+            timeout 60 pnpm run db:migrate
             sudo systemctl restart eduhabit

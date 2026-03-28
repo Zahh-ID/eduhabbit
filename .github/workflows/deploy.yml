@@ -22,12 +22,12 @@ jobs:
           command_timeout: 40m
           script: |
             export NVM_DIR="$HOME/.nvm"
-            source "$NVM_DIR/nvm.sh"                                                                                                                                            
-            cd /home/Nabigh/eduhabbit                               
-            git pull origin master                                                                                                                                              
-            export NODE_OPTIONS="--max-old-space-size=1024"         
-            npm install
-            npm rebuild better-sqlite3                              
-            npm run build                                                                                                                                                       
-            npm run db:migrate
+            source "$NVM_DIR/nvm.sh"
+            cd /home/Nabigh/eduhabbit
+            timeout 60 git pull origin master
+            export NODE_OPTIONS="--max-old-space-size=1024"
+            timeout 300 npm install
+            timeout 120 npm rebuild better-sqlite3
+            timeout 1800 npm run build
+            timeout 60 npm run db:migrate
             sudo systemctl restart eduhabit

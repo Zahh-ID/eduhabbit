@@ -1,20 +1,16 @@
-import Database from "better-sqlite3";
-import { drizzle } from "drizzle-orm/better-sqlite3";
+import { drizzle } from "drizzle-orm/mysql2";
+import mysql from "mysql2/promise";
 import * as schema from "./schema";
 
-const DATABASE_URL = process.env.DATABASE_URL ?? "file:./eduhabit.db";
+const DATABASE_URL =
+  process.env.DATABASE_URL ?? "mysql://eduhabit:password@localhost:3306/eduhabit";
 
-// Strip the "file:" prefix that SQLite URL format uses
-const dbPath = DATABASE_URL.startsWith("file:")
-  ? DATABASE_URL.slice(5)
-  : DATABASE_URL;
+const pool = mysql.createPool({
+  uri: DATABASE_URL,
+  waitForConnections: true,
+  connectionLimit: 10,
+});
 
-const sqlite = new Database(dbPath);
-
-// Enable WAL mode for better concurrent read performance
-sqlite.pragma("journal_mode = WAL");
-sqlite.pragma("foreign_keys = ON");
-
-export const db = drizzle(sqlite, { schema });
+export const db = drizzle(pool, { schema, mode: "default" });
 
 export type DB = typeof db;

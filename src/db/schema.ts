@@ -1,47 +1,51 @@
 import { sql } from "drizzle-orm";
 import {
-  integer,
-  real,
-  sqliteTable,
+  int,
+  double,
+  mysqlTable,
+  varchar,
   text,
+  timestamp,
+  boolean,
+  mysqlEnum,
   uniqueIndex,
-} from "drizzle-orm/sqlite-core";
+} from "drizzle-orm/mysql-core";
 
 // ─── NextAuth Core Tables ───────────────────────────────────────────────────
 
-export const users = sqliteTable("users", {
-  id: text("id")
+export const users = mysqlTable("users", {
+  id: varchar("id", { length: 36 })
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
-  email: text("email").notNull().unique(),
-  emailVerified: integer("email_verified", { mode: "timestamp" }),
-  name: text("name"),
+  email: varchar("email", { length: 255 }).notNull().unique(),
+  emailVerified: timestamp("email_verified"),
+  name: varchar("name", { length: 255 }),
   passwordHash: text("password_hash"),
   image: text("image"),
-  status: text("status"),
-  locale: text("locale").notNull().default("en"),
-  theme: text("theme").notNull().default("dark"),
-  createdAt: integer("created_at", { mode: "timestamp" })
+  status: varchar("status", { length: 255 }),
+  locale: varchar("locale", { length: 10 }).notNull().default("en"),
+  theme: varchar("theme", { length: 20 }).notNull().default("dark"),
+  createdAt: timestamp("created_at")
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
-export const accounts = sqliteTable(
+export const accounts = mysqlTable(
   "accounts",
   {
-    userId: text("user_id")
+    userId: varchar("user_id", { length: 36 })
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
-    type: text("type").notNull(),
-    provider: text("provider").notNull(),
-    providerAccountId: text("provider_account_id").notNull(),
+    type: varchar("type", { length: 255 }).notNull(),
+    provider: varchar("provider", { length: 255 }).notNull(),
+    providerAccountId: varchar("provider_account_id", { length: 255 }).notNull(),
     refreshToken: text("refresh_token"),
     accessToken: text("access_token"),
-    expiresAt: integer("expires_at"),
-    tokenType: text("token_type"),
+    expiresAt: int("expires_at"),
+    tokenType: varchar("token_type", { length: 255 }),
     scope: text("scope"),
     idToken: text("id_token"),
-    sessionState: text("session_state"),
+    sessionState: varchar("session_state", { length: 255 }),
   },
   (table) => ({
     providerUniqueIdx: uniqueIndex("accounts_provider_unique_idx").on(
@@ -51,20 +55,20 @@ export const accounts = sqliteTable(
   })
 );
 
-export const sessions = sqliteTable("sessions", {
-  sessionToken: text("session_token").primaryKey(),
-  userId: text("user_id")
+export const sessions = mysqlTable("sessions", {
+  sessionToken: varchar("session_token", { length: 255 }).primaryKey(),
+  userId: varchar("user_id", { length: 36 })
     .notNull()
     .references(() => users.id, { onDelete: "cascade" }),
-  expires: integer("expires", { mode: "timestamp" }).notNull(),
+  expires: timestamp("expires").notNull(),
 });
 
-export const verificationTokens = sqliteTable(
+export const verificationTokens = mysqlTable(
   "verification_tokens",
   {
-    identifier: text("identifier").notNull(),
-    token: text("token").notNull(),
-    expires: integer("expires", { mode: "timestamp" }).notNull(),
+    identifier: varchar("identifier", { length: 255 }).notNull(),
+    token: varchar("token", { length: 255 }).notNull(),
+    expires: timestamp("expires").notNull(),
   },
   (table) => ({
     identifierTokenUniqueIdx: uniqueIndex(
@@ -75,187 +79,187 @@ export const verificationTokens = sqliteTable(
 
 // ─── Health Insight Tables ───────────────────────────────────────────────────
 
-export const moods = sqliteTable("moods", {
-  id: text("id")
+export const moods = mysqlTable("moods", {
+  id: varchar("id", { length: 36 })
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
-  userId: text("user_id")
+  userId: varchar("user_id", { length: 36 })
     .notNull()
     .references(() => users.id, { onDelete: "cascade" }),
-  mood: text("mood").notNull(),
+  mood: varchar("mood", { length: 50 }).notNull(),
   stressSource: text("stress_source"),
-  sleepQuality: text("sleep_quality"),
+  sleepQuality: varchar("sleep_quality", { length: 50 }),
   advice: text("advice"),
-  date: text("date").notNull(),
-  pointsAwarded: integer("points_awarded").notNull().default(0),
-  createdAt: integer("created_at", { mode: "timestamp" })
+  date: varchar("date", { length: 30 }).notNull(),
+  pointsAwarded: int("points_awarded").notNull().default(0),
+  createdAt: timestamp("created_at")
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
-export const sleepAnalyses = sqliteTable("sleep_analyses", {
-  id: text("id")
+export const sleepAnalyses = mysqlTable("sleep_analyses", {
+  id: varchar("id", { length: 36 })
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
-  userId: text("user_id")
+  userId: varchar("user_id", { length: 36 })
     .notNull()
     .references(() => users.id, { onDelete: "cascade" }),
-  sleepStart: text("sleep_start").notNull(),
-  sleepEnd: text("sleep_end").notNull(),
+  sleepStart: varchar("sleep_start", { length: 10 }).notNull(),
+  sleepEnd: varchar("sleep_end", { length: 10 }).notNull(),
   analysis: text("analysis"),
-  date: text("date").notNull(),
-  pointsAwarded: integer("points_awarded").notNull().default(0),
-  createdAt: integer("created_at", { mode: "timestamp" })
+  date: varchar("date", { length: 30 }).notNull(),
+  pointsAwarded: int("points_awarded").notNull().default(0),
+  createdAt: timestamp("created_at")
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
-export const nutritionLogs = sqliteTable("nutrition_logs", {
-  id: text("id")
+export const nutritionLogs = mysqlTable("nutrition_logs", {
+  id: varchar("id", { length: 36 })
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
-  userId: text("user_id")
+  userId: varchar("user_id", { length: 36 })
     .notNull()
     .references(() => users.id, { onDelete: "cascade" }),
-  dietType: text("diet_type").notNull(),
-  activityLevel: text("activity_level").notNull(),
+  dietType: varchar("diet_type", { length: 50 }).notNull(),
+  activityLevel: varchar("activity_level", { length: 50 }).notNull(),
   advice: text("advice"),
-  date: text("date").notNull(),
-  pointsAwarded: integer("points_awarded").notNull().default(0),
-  createdAt: integer("created_at", { mode: "timestamp" })
+  date: varchar("date", { length: 30 }).notNull(),
+  pointsAwarded: int("points_awarded").notNull().default(0),
+  createdAt: timestamp("created_at")
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
 // ─── Todos ───────────────────────────────────────────────────────────────────
 
-export const todos = sqliteTable("todos", {
-  id: text("id")
+export const todos = mysqlTable("todos", {
+  id: varchar("id", { length: 36 })
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
-  userId: text("user_id")
+  userId: varchar("user_id", { length: 36 })
     .notNull()
     .references(() => users.id, { onDelete: "cascade" }),
-  title: text("title").notNull(),
+  title: varchar("title", { length: 500 }).notNull(),
   description: text("description"),
-  dueDate: text("due_date"),
-  status: text("status", { enum: ["pending", "done", "cancelled"] })
+  dueDate: varchar("due_date", { length: 30 }),
+  status: mysqlEnum("status", ["pending", "done", "cancelled"])
     .notNull()
     .default("pending"),
-  pointsAwarded: integer("points_awarded").notNull().default(0),
-  createdAt: integer("created_at", { mode: "timestamp" })
+  pointsAwarded: int("points_awarded").notNull().default(0),
+  createdAt: timestamp("created_at")
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
 // ─── Finance / Savings ───────────────────────────────────────────────────────
 
-export const savingsTargets = sqliteTable("savings_targets", {
-  id: text("id")
+export const savingsTargets = mysqlTable("savings_targets", {
+  id: varchar("id", { length: 36 })
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
-  userId: text("user_id")
+  userId: varchar("user_id", { length: 36 })
     .notNull()
     .references(() => users.id, { onDelete: "cascade" }),
-  purpose: text("purpose").notNull(),
-  targetAmount: real("target_amount").notNull(),
-  currentAmount: real("current_amount").notNull().default(0),
-  dueDate: text("due_date"),
-  status: text("status", { enum: ["active", "completed", "cancelled"] })
+  purpose: varchar("purpose", { length: 500 }).notNull(),
+  targetAmount: double("target_amount").notNull(),
+  currentAmount: double("current_amount").notNull().default(0),
+  dueDate: varchar("due_date", { length: 30 }),
+  status: mysqlEnum("status", ["active", "completed", "cancelled"])
     .notNull()
     .default("active"),
-  createdAt: integer("created_at", { mode: "timestamp" })
+  createdAt: timestamp("created_at")
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
-export const savingsTransactions = sqliteTable("savings_transactions", {
-  id: text("id")
+export const savingsTransactions = mysqlTable("savings_transactions", {
+  id: varchar("id", { length: 36 })
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
-  targetId: text("target_id")
+  targetId: varchar("target_id", { length: 36 })
     .notNull()
     .references(() => savingsTargets.id, { onDelete: "cascade" }),
-  amount: real("amount").notNull(),
-  date: text("date").notNull(),
-  pointsAwarded: integer("points_awarded").notNull().default(0),
-  createdAt: integer("created_at", { mode: "timestamp" })
+  amount: double("amount").notNull(),
+  date: varchar("date", { length: 30 }).notNull(),
+  pointsAwarded: int("points_awarded").notNull().default(0),
+  createdAt: timestamp("created_at")
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
 // ─── Habits ──────────────────────────────────────────────────────────────────
 
-export const habits = sqliteTable("habits", {
-  id: text("id")
+export const habits = mysqlTable("habits", {
+  id: varchar("id", { length: 36 })
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
-  userId: text("user_id")
+  userId: varchar("user_id", { length: 36 })
     .notNull()
     .references(() => users.id, { onDelete: "cascade" }),
-  title: text("title").notNull(),
-  type: text("type", { enum: ["exercise", "work", "fun", "other"] })
+  title: varchar("title", { length: 500 }).notNull(),
+  type: mysqlEnum("type", ["exercise", "work", "fun", "other"])
     .notNull()
     .default("other"),
-  active: integer("active", { mode: "boolean" }).notNull().default(true),
-  createdAt: integer("created_at", { mode: "timestamp" })
+  active: boolean("active").notNull().default(true),
+  createdAt: timestamp("created_at")
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
-export const habitLogs = sqliteTable("habit_logs", {
-  id: text("id")
+export const habitLogs = mysqlTable("habit_logs", {
+  id: varchar("id", { length: 36 })
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
-  habitId: text("habit_id")
+  habitId: varchar("habit_id", { length: 36 })
     .notNull()
     .references(() => habits.id, { onDelete: "cascade" }),
-  date: text("date").notNull(),
-  completed: integer("completed", { mode: "boolean" }).notNull().default(false),
-  pointsAwarded: integer("points_awarded").notNull().default(0),
-  createdAt: integer("created_at", { mode: "timestamp" })
+  date: varchar("date", { length: 30 }).notNull(),
+  completed: boolean("completed").notNull().default(false),
+  pointsAwarded: int("points_awarded").notNull().default(0),
+  createdAt: timestamp("created_at")
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
 // ─── Gamification ────────────────────────────────────────────────────────────
 
-export const pointsHistory = sqliteTable("points_history", {
-  id: text("id")
+export const pointsHistory = mysqlTable("points_history", {
+  id: varchar("id", { length: 36 })
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
-  userId: text("user_id")
+  userId: varchar("user_id", { length: 36 })
     .notNull()
     .references(() => users.id, { onDelete: "cascade" }),
-  action: text("action").notNull(),
-  points: integer("points").notNull(),
+  action: varchar("action", { length: 100 }).notNull(),
+  points: int("points").notNull(),
   description: text("description"),
-  createdAt: integer("created_at", { mode: "timestamp" })
+  createdAt: timestamp("created_at")
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
-export const userBadges = sqliteTable("user_badges", {
-  id: text("id")
+export const userBadges = mysqlTable("user_badges", {
+  id: varchar("id", { length: 36 })
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
-  userId: text("user_id")
+  userId: varchar("user_id", { length: 36 })
     .notNull()
     .references(() => users.id, { onDelete: "cascade" }),
-  badgeId: text("badge_id").notNull(),
-  claimedAt: integer("claimed_at", { mode: "timestamp" })
+  badgeId: varchar("badge_id", { length: 100 }).notNull(),
+  claimedAt: timestamp("claimed_at")
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
-export const loginStreaks = sqliteTable("login_streaks", {
-  userId: text("user_id")
+export const loginStreaks = mysqlTable("login_streaks", {
+  userId: varchar("user_id", { length: 36 })
     .primaryKey()
     .references(() => users.id, { onDelete: "cascade" }),
-  currentStreak: integer("current_streak").notNull().default(0),
-  longestStreak: integer("longest_streak").notNull().default(0),
-  lastLoginDate: text("last_login_date"),
-  pointsAwardedToday: integer("points_awarded_today").notNull().default(0),
+  currentStreak: int("current_streak").notNull().default(0),
+  longestStreak: int("longest_streak").notNull().default(0),
+  lastLoginDate: varchar("last_login_date", { length: 30 }),
+  pointsAwardedToday: int("points_awarded_today").notNull().default(0),
 });
 
 // ─── TypeScript Inferred Types ────────────────────────────────────────────────

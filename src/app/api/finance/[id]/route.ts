@@ -52,13 +52,12 @@ export async function PATCH(
 
     const newStatus = action === "complete" ? "completed" : "cancelled";
 
-    const [updated] = await db
+    await db
       .update(savingsTargets)
       .set({ status: newStatus })
-      .where(eq(savingsTargets.id, id))
-      .returning();
+      .where(eq(savingsTargets.id, id));
 
-    return NextResponse.json(updated);
+    return NextResponse.json({ ...target, status: newStatus });
   } catch (error) {
     console.error("[PATCH /api/finance/[id]]", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });

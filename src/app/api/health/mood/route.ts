@@ -89,18 +89,18 @@ export async function POST(request: NextRequest) {
       throw err;
     }
 
-    const [inserted] = await db
-      .insert(moods)
-      .values({
-        userId: session.user.id,
-        mood,
-        stressSource: stressSource ?? null,
-        sleepQuality: String(sleepQuality),
-        advice,
-        date: today,
-        pointsAwarded: 25,
-      })
-      .returning();
+    const newId = crypto.randomUUID();
+    await db.insert(moods).values({
+      id: newId,
+      userId: session.user.id,
+      mood,
+      stressSource: stressSource ?? null,
+      sleepQuality: String(sleepQuality),
+      advice,
+      date: today,
+      pointsAwarded: 25,
+    });
+    const [inserted] = await db.select().from(moods).where(eq(moods.id, newId));
 
     await db.insert(pointsHistory).values({
       userId: session.user.id,

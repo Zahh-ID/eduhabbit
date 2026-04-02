@@ -96,17 +96,17 @@ export async function POST(request: NextRequest) {
       throw err;
     }
 
-    const [inserted] = await db
-      .insert(nutritionLogs)
-      .values({
-        userId: session.user.id,
-        dietType,
-        activityLevel,
-        advice,
-        date: today,
-        pointsAwarded: 25,
-      })
-      .returning();
+    const newId = crypto.randomUUID();
+    await db.insert(nutritionLogs).values({
+      id: newId,
+      userId: session.user.id,
+      dietType,
+      activityLevel,
+      advice,
+      date: today,
+      pointsAwarded: 25,
+    });
+    const [inserted] = await db.select().from(nutritionLogs).where(eq(nutritionLogs.id, newId));
 
     await db.insert(pointsHistory).values({
       userId: session.user.id,

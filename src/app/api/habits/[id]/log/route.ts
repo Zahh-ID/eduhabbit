@@ -40,15 +40,15 @@ export async function POST(
       return NextResponse.json({ error: "Already logged today" }, { status: 409 });
     }
 
-    const [created] = await db
-      .insert(habitLogs)
-      .values({
-        habitId: id,
-        date: today,
-        completed: true,
-        pointsAwarded: POINTS.COMPLETE_HABIT,
-      })
-      .returning();
+    const newId = crypto.randomUUID();
+    await db.insert(habitLogs).values({
+      id: newId,
+      habitId: id,
+      date: today,
+      completed: true,
+      pointsAwarded: POINTS.COMPLETE_HABIT,
+    });
+    const [created] = await db.select().from(habitLogs).where(eq(habitLogs.id, newId));
 
     await db.insert(pointsHistory).values({
       userId: session.user.id,

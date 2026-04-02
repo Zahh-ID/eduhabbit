@@ -71,11 +71,8 @@ export async function PATCH(request: Request) {
     if (locale !== undefined) updateData.locale = locale
     if (theme !== undefined) updateData.theme = theme
 
-    const [updated] = await db
-      .update(users)
-      .set(updateData)
-      .where(eq(users.id, userId))
-      .returning()
+    await db.update(users).set(updateData).where(eq(users.id, userId));
+    const [updated] = await db.select().from(users).where(eq(users.id, userId));
 
     return NextResponse.json({
       id: updated.id,

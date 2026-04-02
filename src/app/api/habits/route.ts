@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { eq, and, desc } from "drizzle-orm";
+import { randomUUID } from "crypto";
 import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/db";
@@ -48,14 +49,9 @@ export async function POST(request: NextRequest) {
 
     const { title, type } = parsed.data;
 
-    const [created] = await db
-      .insert(habits)
-      .values({
-        userId: session.user.id,
-        title,
-        type,
-      })
-      .returning();
+    const newId = randomUUID();
+    await db.insert(habits).values({ id: newId, userId: session.user.id, title, type });
+    const [created] = await db.select().from(habits).where(eq(habits.id, newId));
 
     return NextResponse.json(created, { status: 201 });
   } catch (error) {

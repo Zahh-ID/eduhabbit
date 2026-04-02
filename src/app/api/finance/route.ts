@@ -79,15 +79,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const [created] = await db
-      .insert(savingsTargets)
-      .values({
-        userId: session.user.id,
-        purpose,
-        targetAmount,
-        dueDate: dueDate ?? null,
-      })
-      .returning();
+    const newId = crypto.randomUUID();
+    await db.insert(savingsTargets).values({
+      id: newId,
+      userId: session.user.id,
+      purpose,
+      targetAmount,
+      dueDate: dueDate ?? null,
+    });
+    const [created] = await db.select().from(savingsTargets).where(eq(savingsTargets.id, newId));
 
     return NextResponse.json(created, { status: 201 });
   } catch (error) {

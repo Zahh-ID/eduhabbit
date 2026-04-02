@@ -24,11 +24,8 @@ export async function PATCH(
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
-    const [updated] = await db
-      .update(habits)
-      .set({ active: !habit.active })
-      .where(eq(habits.id, id))
-      .returning();
+    await db.update(habits).set({ active: !habit.active }).where(eq(habits.id, id));
+    const [updated] = await db.select().from(habits).where(eq(habits.id, id));
 
     return NextResponse.json(updated);
   } catch (error) {

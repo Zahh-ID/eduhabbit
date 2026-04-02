@@ -59,11 +59,8 @@ export async function PATCH(
       (updates as Record<string, unknown>).pointsAwarded = POINTS.COMPLETE_TODO;
     }
 
-    const [updated] = await db
-      .update(todos)
-      .set(updates)
-      .where(eq(todos.id, id))
-      .returning();
+    await db.update(todos).set(updates).where(eq(todos.id, id));
+    const [updated] = await db.select().from(todos).where(eq(todos.id, id));
 
     return NextResponse.json(updated);
   } catch (error) {

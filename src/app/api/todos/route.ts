@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { eq, and, desc } from "drizzle-orm";
+import { randomUUID } from "crypto";
 import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/db";
@@ -61,15 +62,15 @@ export async function POST(request: NextRequest) {
 
     const { title, description, dueDate } = parsed.data;
 
-    const [created] = await db
-      .insert(todos)
-      .values({
-        userId: session.user.id,
-        title,
-        description: description ?? null,
-        dueDate: dueDate ?? null,
-      })
-      .returning();
+    const newId = randomUUID();
+    await db.insert(todos).values({
+      id: newId,
+      userId: session.user.id,
+      title,
+      description: description ?? null,
+      dueDate: dueDate ?? null,
+    });
+    const [created] = await db.select().from(todos).where(eq(todos.id, newId));
 
     return NextResponse.json(created, { status: 201 });
   } catch (error) {

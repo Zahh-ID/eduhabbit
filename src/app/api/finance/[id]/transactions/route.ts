@@ -92,16 +92,15 @@ export async function POST(
       return NextResponse.json({ error: "Target is not active" }, { status: 400 });
     }
 
-    const [transaction] = await db
-      .insert(savingsTransactions)
-      .values({
-        id: randomUUID(),
-        targetId: id,
-        amount,
-        date,
-        pointsAwarded: POINTS.ADD_SAVINGS,
-      })
-      .returning();
+    const txId = randomUUID();
+    await db.insert(savingsTransactions).values({
+      id: txId,
+      targetId: id,
+      amount,
+      date,
+      pointsAwarded: POINTS.ADD_SAVINGS,
+    });
+    const [transaction] = await db.select().from(savingsTransactions).where(eq(savingsTransactions.id, txId));
 
     await db.insert(pointsHistory).values({
       id: randomUUID(),
@@ -115,11 +114,11 @@ export async function POST(
     const newStatus =
       newCurrentAmount >= target.targetAmount ? "completed" : "active";
 
-    const [updatedTarget] = await db
+    await db
       .update(savingsTargets)
       .set({ currentAmount: newCurrentAmount, status: newStatus })
-      .where(eq(savingsTargets.id, id))
-      .returning();
+      .where(eq(savingsTargets.id, id));
+    const [updatedTarget] = await db.select().from(savingsTargets).where(eq(savingsTargets.id, id));
 
     return NextResponse.json({ transaction, target: updatedTarget }, { status: 201 });
   } catch (error) {

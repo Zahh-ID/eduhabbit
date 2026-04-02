@@ -104,8 +104,8 @@ export const sleepAnalyses = mysqlTable("sleep_analyses", {
   userId: varchar("user_id", { length: 36 })
     .notNull()
     .references(() => users.id, { onDelete: "cascade" }),
-  sleepStart: varchar("sleep_start", { length: 10 }).notNull(),
-  sleepEnd: varchar("sleep_end", { length: 10 }).notNull(),
+  sleepStart: varchar("sleep_start", { length: 30 }).notNull(),
+  sleepEnd: varchar("sleep_end", { length: 30 }).notNull(),
   analysis: text("analysis"),
   date: varchar("date", { length: 30 }).notNull(),
   pointsAwarded: int("points_awarded").notNull().default(0),

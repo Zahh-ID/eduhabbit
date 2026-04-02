@@ -404,5 +404,61 @@
     "en": "English",
     "id": "Indonesia",
     "switch": "Ganti bahasa"
+  },
+  "landing": {
+    "hero": {
+      "badge": "Hidupmu. Teroptimasi.",
+      "title": "Kuasai",
+      "titleHighlight": "Kebiasaanmu",
+      "subtitle": "Lacak tugas, kesehatan, keuangan, dan streak—semua dalam satu tempat.",
+      "ctaDashboard": "Ke Beranda",
+      "ctaStart": "Mulai Perjalananmu",
+      "ctaSignIn": "Masuk"
+    },
+    "story": {
+      "items": [
+        {
+          "heading": "Kamu menetapkan tujuan. Kamu membuat rencana.",
+          "body": "Tapi hidup menghalangi. Fokus memudar. Streak terputus."
+        },
+        {
+          "heading": "Ketidakteraturan menguras energimu.",
+          "body": "Mengelola tugas, melacak kesehatan, dan mengatur keuangan di aplikasi berbeda menyebabkan kelelahan."
+        },
+        {
+          "heading": "Tidak harus sesulit ini.",
+          "body": "Masuki ekosistem terpadu yang dirancang untuk membangun momentum tak terhentikan."
+        }
+      ]
+    },
+    "features": {
+      "badge": "Fitur",
+      "heading": "Semua yang kamu butuhkan. Tanpa yang tidak perlu.",
+      "subtitle": "Rangkaian alat terpadu yang dirancang untuk bekerja bersama dengan mulus.",
+      "items": [
+        {
+          "title": "Pelacak Kebiasaan",
+          "body": "Bangun rutinitas konsisten dengan sistem streak yang powerful. Visualisasikan progresmu melalui heatmap interaktif dan jangan pernah putus rantainya."
+        },
+        {
+          "title": "Todo Pintar",
+          "body": "Atur harimu. Prioritaskan tugas dan jernihkan pikiranmu."
+        },
+        {
+          "title": "Kecerdasan Kesehatan",
+          "body": "Insight berbasis AI yang menganalisis tidur, suasana hati, dan nutrisimu."
+        },
+        {
+          "title": "Tujuan Keuangan",
+          "body": "Lacak target tabunganmu dengan presisi tinggi. Visualisasikan perjalananmu menuju kebebasan finansial langsung bersama kebiasaan pribadimu."
+        }
+      ]
+    },
+    "cta": {
+      "heading": "Siap mengambil kendali?",
+      "body": "Bergabunglah dengan ribuan orang lain yang telah mengubah rutinitas kacau mereka menjadi momentum tak terhentikan.",
+      "ctaDashboard": "Kembali ke Beranda",
+      "ctaStart": "Mulai Gratis"
+    }
   }
 }

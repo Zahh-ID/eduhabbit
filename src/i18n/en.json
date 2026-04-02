@@ -404,5 +404,61 @@
     "en": "English",
     "id": "Indonesia",
     "switch": "Switch language"
+  },
+  "landing": {
+    "hero": {
+      "badge": "Your Life. Optimized.",
+      "title": "Master your",
+      "titleHighlight": "Habits",
+      "subtitle": "Track tasks, health, finances, and streaks—all in one place.",
+      "ctaDashboard": "Go to Dashboard",
+      "ctaStart": "Start Your Journey",
+      "ctaSignIn": "Sign In"
+    },
+    "story": {
+      "items": [
+        {
+          "heading": "You set goals. You make plans.",
+          "body": "But life gets in the way. Focus drifts. Streaks break."
+        },
+        {
+          "heading": "Disorganization drains your energy.",
+          "body": "Juggling tasks, tracking health, and managing finances in different apps leads to burnout."
+        },
+        {
+          "heading": "It doesn't have to be this hard.",
+          "body": "Enter a unified ecosystem designed to build unstoppable momentum."
+        }
+      ]
+    },
+    "features": {
+      "badge": "Features",
+      "heading": "Everything you need. Nothing you don't.",
+      "subtitle": "A unified suite of tools designed to work together seamlessly.",
+      "items": [
+        {
+          "title": "Habit Tracking",
+          "body": "Build consistent routines with our powerful streak system. Visualize your progress through interactive heatmaps and never break the chain."
+        },
+        {
+          "title": "Smart Todos",
+          "body": "Organize your day. Prioritize tasks and clear your mind."
+        },
+        {
+          "title": "Health Intelligence",
+          "body": "AI-driven insights analyzing your sleep, mood, and nutrition."
+        },
+        {
+          "title": "Financial Goals",
+          "body": "Track your savings targets with extreme precision. Visualize your journey toward financial freedom directly alongside your personal habits."
+        }
+      ]
+    },
+    "cta": {
+      "heading": "Ready to take control?",
+      "body": "Join thousands of others who have transformed their chaotic routines into unstoppable momentum.",
+      "ctaDashboard": "Return to Dashboard",
+      "ctaStart": "Start for Free"
+    }
   }
 }

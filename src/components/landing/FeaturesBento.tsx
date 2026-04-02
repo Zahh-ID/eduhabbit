@@ -1,6 +1,7 @@
 "use client";
 
 import { Variants, motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { LuListTodo, LuHeartHandshake, LuWallet, LuCalendarDays } from "react-icons/lu";
 import styles from "./FeaturesBento.module.css";
 
@@ -17,7 +18,32 @@ const cardVariants: Variants = {
   }),
 };
 
+const FEATURES = [
+  {
+    icon: LuCalendarDays,
+    iconClass: undefined,
+    cardClass: "largeCard",
+  },
+  {
+    icon: LuListTodo,
+    iconClass: "blueIcon",
+    cardClass: undefined,
+  },
+  {
+    icon: LuHeartHandshake,
+    iconClass: "greenIcon",
+    cardClass: undefined,
+  },
+  {
+    icon: LuWallet,
+    iconClass: "yellowIcon",
+    cardClass: "wideCard",
+  },
+];
+
 export function FeaturesBento() {
+  const t = useTranslations("landing.features");
+
   return (
     <section className={styles.bentoSection}>
       <div className={styles.container}>
@@ -28,83 +54,47 @@ export function FeaturesBento() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className={styles.badge}>Features</span>
-          <h2>Everything you need. Nothing you don't.</h2>
-          <p>A unified suite of tools designed to work together seamlessly.</p>
+          <span className={styles.badge}>{t("badge")}</span>
+          <h2>{t("heading")}</h2>
+          <p>{t("subtitle")}</p>
         </motion.div>
 
         <div className={styles.grid}>
-          {/* Main Habit Tracking Card */}
-          <motion.div 
-            className={`${styles.card} ${styles.largeCard}`}
-            custom={0}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-          >
-            <div className={styles.cardHeader}>
-              <div className={styles.iconWrapper}><LuCalendarDays size={24} /></div>
-              <h3>Habit Tracking</h3>
-            </div>
-            <p className={styles.cardBody}>
-              Build consistent routines with our powerful streak system. Visualize your progress through interactive heatmaps and never break the chain.
-            </p>
-          </motion.div>
+          {FEATURES.map((feature, i) => {
+            const Icon = feature.icon;
+            const cardClassName = [
+              styles.card,
+              feature.cardClass ? styles[feature.cardClass] : "",
+            ]
+              .filter(Boolean)
+              .join(" ");
+            const iconClassName = [
+              styles.iconWrapper,
+              feature.iconClass ? styles[feature.iconClass] : "",
+            ]
+              .filter(Boolean)
+              .join(" ");
 
-          {/* Todo Card */}
-          <motion.div 
-            className={styles.card}
-            custom={1}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-          >
-            <div className={styles.cardHeader}>
-              <div className={`${styles.iconWrapper} ${styles.blueIcon}`}><LuListTodo size={24} /></div>
-              <h3>Smart Todos</h3>
-            </div>
-            <p className={styles.cardBody}>
-              Organize your day. Prioritize tasks and clear your mind.
-            </p>
-          </motion.div>
-
-          {/* Health Card */}
-          <motion.div 
-            className={styles.card}
-            custom={2}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-          >
-            <div className={styles.cardHeader}>
-              <div className={`${styles.iconWrapper} ${styles.greenIcon}`}><LuHeartHandshake size={24} /></div>
-              <h3>Health Intelligence</h3>
-            </div>
-            <p className={styles.cardBody}>
-              AI-driven insights analyzing your sleep, mood, and nutrition.
-            </p>
-          </motion.div>
-
-          {/* Finance Card */}
-          <motion.div 
-            className={`${styles.card} ${styles.wideCard}`}
-            custom={3}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-          >
-            <div className={styles.cardHeader}>
-              <div className={`${styles.iconWrapper} ${styles.yellowIcon}`}><LuWallet size={24} /></div>
-              <h3>Financial Goals</h3>
-            </div>
-            <p className={styles.cardBody}>
-              Track your savings targets with extreme precision. Visualize your journey toward financial freedom directly alongside your personal habits.
-            </p>
-          </motion.div>
+            return (
+              <motion.div
+                key={i}
+                className={cardClassName}
+                custom={i}
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                <div className={styles.cardHeader}>
+                  <div className={iconClassName}>
+                    <Icon size={24} />
+                  </div>
+                  <h3>{t(`items.${i}.title`)}</h3>
+                </div>
+                <p className={styles.cardBody}>{t(`items.${i}.body`)}</p>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -1,10 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import styles from "./CTASection.module.css";
 
 export function CTASection({ hasSession }: { hasSession: boolean }) {
+  const t = useTranslations("landing.cta");
+
   return (
     <section className={styles.ctaContainer}>
       <motion.div 
@@ -14,17 +17,17 @@ export function CTASection({ hasSession }: { hasSession: boolean }) {
         viewport={{ once: true, margin: "-150px" }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <h2>Ready to take control?</h2>
-        <p>Join thousands of others who have transformed their chaotic routines into unstoppable momentum.</p>
+        <h2>{t("heading")}</h2>
+        <p>{t("body")}</p>
         
         <div className={styles.btnWrapper}>
           {hasSession ? (
             <Link href="/dashboard" className={styles.primaryBtn}>
-              Return to Dashboard
+              {t("ctaDashboard")}
             </Link>
           ) : (
             <Link href="/register" className={styles.primaryBtn}>
-              Start for Free
+              {t("ctaStart")}
             </Link>
           )}
         </div>

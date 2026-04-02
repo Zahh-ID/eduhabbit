@@ -1,39 +1,38 @@
 .storyContainer {
-  position: relative;
-  height: 300vh; /* creates the scrollable area */
+  padding: 8rem 2rem;
   background-color: var(--color-bg);
-}
-
-.stickyWrapper {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.content {
   position: relative;
-  width: 100%;
-  max-width: 800px;
-  height: 100%;
+}
+
+.statementsWrapper {
+  max-width: 900px;
+  margin: 0 auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 2rem;
+  flex-direction: column;
+  gap: 5rem;
 }
 
 .statement {
-  position: absolute;
   text-align: center;
-  width: 100%;
-  padding: 0 2rem;
+  padding: 3rem 2rem;
+  position: relative;
+}
+
+.stepNumber {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 100px;
+  background: rgba(59, 130, 246, 0.1);
 }
 
 .statement h2 {
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 700;
   color: var(--color-text);
   margin-bottom: 1rem;
@@ -42,7 +41,9 @@
 }
 
 .statement p {
-  font-size: clamp(1.125rem, 2vw, 1.5rem);
-  color: var(--color-text-secondary);
-  line-height: 1.5;
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  color: var(--color-text-secondary, var(--color-text-muted));
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
 }
